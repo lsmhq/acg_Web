@@ -37,33 +37,6 @@ code {
   border: 0;
   margin: 18px  5px 0 0 ;
 }
-#footer{
-  width: 100%;
-  height: 55px;
-  position:fixed;
-  right:0px;
-  bottom:0px;
-  float: left;
-  background-color: rgb(255,64,129);
-}
-.box{
-  width: 25%;
-  height: 55px;
-  float: left;
-}
-.footerimg{
-  width: 30px;
-  height: 30px;
-  margin: 3px 35% ;
-}
-.text{
-  margin: 0 38%;
-  font-size: 10px;
-}
-.tab{
-  width: 25%;
-  margin: 0 8%;
-}
 /* 搜索头 */
 ul {
   border-radius: 5px;
@@ -137,3 +110,34 @@ li{
   width:100%;
 
 }/* Person*/
+
+/* 粉丝 */
+ul{
+  padding-left:10%;
+}
+li{
+  padding: 0;
+  margin-top: 10%;
+}
+li img{
+  width:15%;
+  height: 15%;
+}
+
+.setting1{
+  margin-top: 5%;
+}
+
+.setting2{
+  margin-top: 5%;
+  height: 20%;
+}
+.funs1{
+  width: 7%;
+  height: 7%;
+  float: right;
+}
+.concern1{
+  float: right;
+}
+

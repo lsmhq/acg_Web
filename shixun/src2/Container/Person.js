@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { NavBar, Icon} from 'antd-mobile';
-import Box from '../component/Box';
-import {Link,HashRouter as Router,Route} from 'react-router-dom';
 
 export default class Person extends Component {
     render() {
@@ -31,16 +29,15 @@ export default class Person extends Component {
                 {/* 粉丝关注历史 */}
                 <div style={{marginTop:'3%'}}>
                     <div className='person2'>
-                    <Link to='/funs'>粉丝 <br/> 0 <hr/></Link>
+                        粉丝 <br/> 0 <hr/>
                     </div>
                     <div className='person2'>
-                    <Link to='/concern'>关注 <br/> 112 <hr/></Link>
+                        关注 <br/> 112 <hr/>
                     </div>
                     <div className='person2'>
-                        <Link to='/history'>历史 <br/> 1231 <hr/></Link>
+                        历史 <br/> 1231 <hr/>
                     </div>
                 </div>
-
                 {/* 个人简介 */}
                 <div className='person3'>
                 <p style={{marginTop:'20%'}}>性别：</p><hr/>
@@ -52,24 +49,6 @@ export default class Person extends Component {
                 <textarea className='person4' placeholder='我的【个性】' />
                 </div>
             </div>
-            <div id='footer'>
-                        <Link to='/'>
-                        <Box src='/img/首页.png' title='首页' />
-                        </Link>
-                        <Link to='/'>
-                        <Box src='/img/动态.png' title='动态' />
-                        </Link>
-                        <Link to='/appgood'>
-                        <Box src='/img/商城.png' title='商城'/>
-                        </Link>
-                        <Link to='/person'>
-                            <Box src='/img/个人中心.png' title='个人' />
-                        </Link>
-                        
-                        
-
-                    
-                </div>
             </div>
         )
     }

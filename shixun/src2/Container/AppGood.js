@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
-import {Link,HashRouter as Router,Route} from 'react-router-dom';
+import {Link,BrowserRouter as Router,Route} from 'react-router-dom';
 import ShopCar from './ShopCar'
 
 export default class AppGood extends Component {

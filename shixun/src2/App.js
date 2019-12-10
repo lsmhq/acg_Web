@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Body from '../Body';
-export default class Game extends Component {
+import AppTab from './Container/AppTab'
+
+export default class App extends Component {
     render() {
         return (
             <div>
-                <Body url=''/>
-                Game
+                <AppTab/>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
-import {Link,BrowserRouter as Router,Route} from 'react-router-dom';
-import ShopCar from './ShopCar'
+import {Link,HashRouter as Router,Route} from 'react-router-dom';
+import Box from '../component/Box';
 
 export default class AppGood extends Component {
     
@@ -12,7 +12,7 @@ export default class AppGood extends Component {
         }
     }
     componentDidMount(){
-        fetch('https://cnodejs.org/api/v1/topics?page=')
+        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
         .then((res)=>res.json())
         .then((res)=>{
             this.setState({data:res.data});
@@ -51,18 +51,19 @@ export default class AppGood extends Component {
                 }} placeholder='搜索商品' ></input>
                 {this.state.data.map((item,key)=>(
                         <ul style={{padding:'0',}} key={key}>                           
-                                <Link to={'/topics/'+item.id}  style={{fontSize:'10px',}}>
-                                    <li style={{height:'200px' ,width:'45%',float:'left',border: '1px solid #cfcfcf',
-                                    margin:'10px 2.5% 0 2.5%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
-                                        <img src={item.author.avatar_url} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
+                                <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
+                                    <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
+                                    margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
+                                        <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         
                                         <p style={{margin:'20px 0 0 10%'}}>
-                                            商品名称：{}
+                                            商品名称：{item.name}
+                                            <br/>
                                             <span style={{marginLeft:'10px',color:"orange"}}>
-                                                价格：{}元
+                                                价格：{item.price}元
                                             </span>
                                         </p>
-                                        <p style={{margin:'20px 0 0 10%'}}>商家：{}</p>
+                                        <p style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</p>
 
                                         
                                     </li>                                  
@@ -71,6 +72,24 @@ export default class AppGood extends Component {
                     ))
                 }
             </div>
+            <div id='footer'>
+                        <Link to='/'>
+                        <Box src='/img/首页.png' title='首页' />
+                        </Link>
+                        <Link to='/'>
+                        <Box src='/img/动态.png' title='动态' />
+                        </Link>
+                        <Link to='/appgood'>
+                        <Box src='/img/商城.png' title='商城'/>
+                        </Link>
+                        <Link to='/person'>
+                            <Box src='/img/个人中心.png' title='个人' />
+                        </Link>
+                        
+                        
+
+                    
+                </div>
             </Router>
 
                 

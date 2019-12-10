@@ -1,26 +1,16 @@
 import React, { Component } from 'react'
-
+import Body from '../Body';
 import {Link,HashRouter as Router,Route} from 'react-router-dom'
-import Box from '../component/Box';
-import Header from '../component/Header';
-import Main from '../component/pages/Main';
-import Game from '../component/pages/Game';
-import Comic from '../component/pages/Comic';
-import Animat from '../component/pages/Animat';
-
-export default class AppHome extends Component {
+import Box from '../Box';
+import Header from '../Header';
+export default class Game extends Component {
     render() {
         return (
-            <Router>
-                <div>
+            <div>
+                 <div>
                 <Header/>
-                <div>
-                <Route path='/'   exact component={Main}/>
-                    <Route path='/game'   component={Game}/>
-                    <Route path='/animat'  component={Animat}/>
-                    <Route path='/comic'  exact component={Comic}/>
                 </div>
-
+                <Body url='https://daitianfang.1459.top/api/v1/chapter?type=game'/>
                 <div id='footer'>
                         <Link to='/'>
                         <Box src='/img/首页.png' title='首页' />
@@ -35,10 +25,7 @@ export default class AppHome extends Component {
                             <Box src='/img/个人中心.png' title='个人' />
                         </Link>
                 </div>
-
             </div>
-            </Router>
-            
         )
     }
 }
