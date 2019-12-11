@@ -7,6 +7,7 @@ export default class ShopCar extends Component {
         super();
         this.state = {
             data: []
+            
         }
     }
     componentDidMount(){
@@ -19,6 +20,7 @@ export default class ShopCar extends Component {
     render() {
         
         return (
+         
             <div>
                 <Router>
                 <NavBar
@@ -42,15 +44,16 @@ export default class ShopCar extends Component {
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
                                         <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         
-                                        <p style={{margin:'20px 0 0 10%'}}>
+                                        <h4 style={{margin:'20px 0 0 10%'}}>
                                             商品名称：{item.name}
-                                            <br>
-                                            </br>
+                                            <br/>
+                                            <br/>
                                             <span style={{color:"orange"}}>
                                                 价格：{item.price}元
+                                                
                                             </span>
-                                        </p>
-                                        <p style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</p>
+                                        </h4>
+                                        <h4 style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</h4>
 
                                         
                                     </li>                                  

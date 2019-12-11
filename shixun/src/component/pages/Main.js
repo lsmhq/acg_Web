@@ -19,7 +19,7 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                 <WingBlank style={{margin:'0' ,marginTop:'110px' }}>
+                 <WingBlank style={{margin:'0' ,marginTop:'120px' }}>
                     <Carousel
                     autoplay={true}
                     infinite

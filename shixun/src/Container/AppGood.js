@@ -49,6 +49,8 @@ export default class AppGood extends Component {
                 <input type='search' style={{
                     width:'80%',height:'30px',textAlign:'center',margin:'15px 0 0 10%',borderRadius:'10px',border:'none'
                 }} placeholder='搜索商品' ></input>
+               
+                             
                 {this.state.data.map((item,key)=>(
                         <ul style={{padding:'0',}} key={key}>                           
                                 <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
@@ -56,14 +58,15 @@ export default class AppGood extends Component {
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
                                         <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         
-                                        <p style={{margin:'20px 0 0 10%'}}>
+                                        <h4 style={{margin:'20px 0 0 10%'}}>
                                             商品名称：{item.name}
                                             <br/>
-                                            <span style={{marginLeft:'10px',color:"orange"}}>
+                                            <br/>
+                                            <span style={{color:"orange"}}>
                                                 价格：{item.price}元
                                             </span>
-                                        </p>
-                                        <p style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</p>
+                                        </h4>
+                                        <h4 style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</h4>
 
                                         
                                     </li>                                  
@@ -71,12 +74,13 @@ export default class AppGood extends Component {
                         </ul>    
                     ))
                 }
+               
             </div>
             <div id='footer'>
                         <Link to='/'>
                         <Box src='/img/首页.png' title='首页' />
                         </Link>
-                        <Link to='/'>
+                        <Link to='/appaction'>
                         <Box src='/img/动态.png' title='动态' />
                         </Link>
                         <Link to='/appgood'>

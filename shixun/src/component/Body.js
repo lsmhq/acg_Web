@@ -12,16 +12,18 @@ export default class Body extends Component {
         return (
             <div>
                  {this.state.data.map((item,key)=>(
-                        <ul style={{padding:'0',border: '1px solid #cfcfcf',}} key={key}>                           
-                                <Link to={''}  style={{fontSize:'12px',}}>
+                        <ul style={{padding:'0',border: '1px solid #cfcfcf',
+
+                        }} key={key}>                           
+                                <Link to={'/articlemsg/'+item.id} style={{fontSize:'12px',}}>
                                     <li style={{height:'90px' ,width:'100%'}}>
-                                        <img src={item.auther} style={{width:'80',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
-                                        <p style={{}}>
+                                        <img src={"https:\\daitianfang.1459.top"+item.images+"0.jpg"} style={{width:'120px',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
+                                        <h3 style={{}}>
                                         {item.auther}                               
-                                        </p> 
-                                        <p style={{}}>
+                                        </h3> 
+                                        <h4 style={{}}>
                                         {item.title}
-                                        </p>
+                                        </h4>
                                     </li>                                  
                                 </Link>                                                                                                               
                         </ul>    

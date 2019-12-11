@@ -32,13 +32,14 @@ export default class MyCood extends Component {
                                         <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'25%',height:'80%',float:'left',
                                         margin:'10px 0 0 10%'}} alt='商品'/>
                                         
-                                        <p style={{margin:'20px 0 0 100px'}}>
+                                        <h3 style={{margin:'20px 0 0 150px'}}>
                                             商品名称：{item.name}
-                                            <br></br>
+                                            <br/>
+                                            <br/>
                                             <span style={{color:"orange"}}>
                                                 价格：{item.price}元
                                             </span>
-                                        </p>
+                                        </h3>
                                        
 
                                         

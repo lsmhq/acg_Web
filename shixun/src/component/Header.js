@@ -12,7 +12,7 @@ export default class Header extends Component {
                     <button className='button'>
                     <Icon key="0" type="search" style={{ color:'#000'}} />
                     </button>  
-                    <input type='search' className='search' placeholder='单行输入' ></input>
+                    <input type='search' className='search' placeholder='单行输入' name='search' ></input>
             </div>
             <div>
                  <div  className='nav'>

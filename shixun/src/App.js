@@ -13,6 +13,7 @@ import Comic from './component/pages/Comic';
 import Animat from './component/pages/Animat';
 import ShopCar from './Container/ShopCar';
 import GoodMsg from './Container/GoodMsg';
+import Articlemsg from './Container/Articlemsg';
 
 export default class App extends Component {
     render() {
@@ -30,6 +31,7 @@ export default class App extends Component {
                 <Route path='/comic'  exact component={Comic}/>
                 <Route path='/shopcar'  component={ShopCar}/>
                 <Route path='/goodmsg/:id'  component={GoodMsg}/>
+                <Route path='/articlemsg/:id'  component={Articlemsg}/>
              
                  
             </Router>

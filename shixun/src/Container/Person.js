@@ -56,7 +56,7 @@ export default class Person extends Component {
                         <Link to='/'>
                         <Box src='/img/首页.png' title='首页' />
                         </Link>
-                        <Link to='/'>
+                        <Link to='/appaction'>
                         <Box src='/img/动态.png' title='动态' />
                         </Link>
                         <Link to='/appgood'>
