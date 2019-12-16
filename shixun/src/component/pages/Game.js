@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Body from '../Body';
-import {Link,HashRouter as Router,Route} from 'react-router-dom'
+import {Link,HashRouter as Router,} from 'react-router-dom'
 import Box from '../Box';
 import Header from '../Header';
 export default class Game extends Component {
@@ -12,7 +12,7 @@ export default class Game extends Component {
                 </div>
                 <Body url='https://daitianfang.1459.top/api/v1/chapter?type=game'/>
                 <div id='footer'>
-                        <Link to='/'>
+                        <Link to='/apphome'>
                         <Box src='/img/首页.png' title='首页' />
                         </Link>
                         <Link to='/appaction'>

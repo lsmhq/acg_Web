@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {NavBar, Icon, Tabs,List, InputItem,Button,Card,WhiteSpace,TabBar} from 'antd-mobile';
-
+import {NavBar, Icon,Card,} from 'antd-mobile';
+import ReactDOM from 'react-dom'
 import {Link} from 'react-router-dom'
 export default class Concern extends Component {
   constructor(){
@@ -9,14 +9,7 @@ export default class Concern extends Component {
         data: []
     }
 }
-componentDidMount(){
-    let page = this.props.match.params.page;
-    fetch('https://cnodejs.org/api/v1/topics?page='+page)
-    .then((res)=>res.json())
-    .then((res)=>{
-        this.setState({data:res.data});
-    })
-}
+
   render() {
     return (
       <div>
@@ -28,28 +21,45 @@ componentDidMount(){
           onLeftClick={() => window.history.back(-1)}
           >我的关注</NavBar>
          {/* 我的关注 */}
-         {
-            this.state.data.map((item,key)=>(
-                <Card key={key}>
-                    <Card.Body>
-                        <img src={item.author.avatar_url} style={{width:'30px',height:'30px',float:"left"}} alt=''  />
-                        <Link to={'/topics/'+item.id} style={{marginLeft:"20px",color:"#778087",fontSize:"14px"}}>{item.title}</Link>
-                        <button className='concern1'>取消关注</button>
-                    </Card.Body>
-                </Card>
-                
-                
-            ))
-        }
+
+         {this.state.data.map((item,key)=>(
+                        <ul style={{padding:'0',border: '1px solid #cfcfcf',
+                        marginBlockStart:'0' ,margin:'0px 0px 10px 0px'
+                        }} key={key}>                           
+                                <Link to={''} style={{fontSize:'12px',}}>
+                                    <li style={{height:'90px' ,width:'100%'}}>
+                                    <button className='concern' onClick={(e)=>{this.fetch_concern(e)}}>取消关注</button>  
+                                        <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } 
+                                        style={{width:'60px',height:'60px', float:'left',borderRadius:'50%',
+                                        margin:'15px 0px 10px 40px'}} alt=''/>
+                                        
+                                        <p style={{margin:'20px 90px 5px 0px',float:'right',fontSize:'14px',fontWeight:'bold',
+
+                                        }}>
+                                            {item.foucename} <br/>
+                                            <br/>   
+
+                                            <span style={{fontSize:'12px'}}>
+                                                {item.fouceid}
+                                            </span>
+                                           
+                                        </p>                                                                              
+                                         
+                                    </li>                                  
+                                </Link>                                                                                                               
+                        </ul>    
+                    ))
+                }   
+        
         <div id='footerfuns'>
             <div className='boxfuns'>
-                <Link to='/funs' >
+                <Link to={'/funs/'+this.props.match.params.id} >
                     <img src='/img/funs.png' alt=''   className='footerimgfuns'/>
                     <span className='textfuns'>我的粉丝</span>
                 </Link>
             </div>
             <div className='boxfuns'>
-                <Link to='/concern'>
+                <Link to={'/concern/'+this.props.match.params.id}>
                   <img src='/img/关注.png' alt='' className='footerimgfuns'/>
                   <span className='textfuns'>我的关注</span>
                 </Link>
@@ -58,6 +68,39 @@ componentDidMount(){
         </div>
       </div>
     )
+  }
+  componentDidMount(){
+        
+    fetch('https://daitianfang.1459.top/api/v1/fouce?id='+this.props.match.params.id)
+    .then((res)=>res.json())
+    .then((res)=>{
+        this.setState({data:res.data});
+    })
+  }
+  fetch_concern(){
+    let data = {};
+    data.type='del';
+      
+    data.id=this.state.fouceid;
+    fetch('https://daitianfang.1459.top/api/v1/fouce',{
+        method:'POST',
+        mode:'cors',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+    }).then(req=>{
+        return req.text();
+    }).then(data=>{
+        switch (data) {
+            case 'success':{
+                alert('取关成功')
+                break;
+            }
+            case 'error':{
+                alert('取关失败')
+                break;
+            }
+        }
+    })
   }
 }
 

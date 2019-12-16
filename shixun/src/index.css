@@ -20,7 +20,7 @@ code {
   width: 100%;
   background-color: rgb(255 64 129);
 }
-.nav{
+.nav1{
   position:fixed;
   right:0px;
   top:60px;
@@ -86,9 +86,13 @@ a{
   list-style: none;
   color:black;
 }
-li{
-  list-style: none;
+
+/* 搜索热点*/
+.hot li{
+  float: left;
+  padding-left:0px;
 }
+
 /* 全局*/
 .container {
   position: relative;
@@ -133,11 +137,12 @@ li{
 }
 
 .person2{
-  width: 30%;
-  margin: auto;
+  margin-top: 8px;
+  width: 33%;
   float: left;
   text-align: center;
-  margin-left: 3%;
+  color: white;
+  font-weight: bold;
 }
 .person3{
   margin: auto;
@@ -164,8 +169,15 @@ li{
   height: 7%;
   float: right;
 }
-.concern1{
+.concern{
+  background-color: rgb(255,64,129);
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
   float: right;
+  width: 70px;
+  height: 30px;
+  margin-top: 60px;
 }
 
 
@@ -322,4 +334,63 @@ code {
   background: #f9f9f9;
   padding: 0px 2px;
 }
+/* 左菜单 */
+.menu1{
+  border-bottom: 2px solid #dfd5cf;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  
+}
+.menu2{
+  margin:0 auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-inline-start: 0px;
+}
+.menu3{
+  float: right;
+  padding:5%;
+}
+/* 设置 */
+.setting1{
+  margin-top: 5%;
+}
+
+.setting2{
+  margin-top: 5%;
+  height: 20%;
+}
+/* 动态 */
+.actiona0{
+  background-image: url('/img/background.png');
+  
+}
+.actiona1{
+  width: 80%;
+  height: 30px;
+  margin-left: 30px;
+  border: 0;
+  opacity: 1;
+}
+.actiona2{
+  width: 80%;
+  height: 101px;
+  margin-left: 30px;
+  border-radius: 3px;
+}
+.actiona3{
+  background-color: rgb(255,64,129);
+  border:0;
+  text-align: center;
+  width: 30%;
+  color: white;
+  height: 35px;
+  font-size: 15px;
+  margin:10px 0px 50px 0px ;
+  border-radius: 3px;
+}
+
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
-import {Link,HashRouter as Router,Route} from 'react-router-dom';
+import {Link,HashRouter as Router,} from 'react-router-dom';
 import CommentApp from '../Comments/CommentApp'
 export default class GoodMsg extends Component {
     

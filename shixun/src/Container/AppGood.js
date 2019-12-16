@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
-import {Link,HashRouter as Router,Route} from 'react-router-dom';
+import {Link,HashRouter as Router,} from 'react-router-dom';
 import Box from '../component/Box';
 
 export default class AppGood extends Component {
@@ -46,9 +46,16 @@ export default class AppGood extends Component {
                     }
                     >商城</NavBar>
                 <div>
-                <input type='search' style={{
-                    width:'80%',height:'30px',textAlign:'center',margin:'15px 0 0 10%',borderRadius:'10px',border:'none'
-                }} placeholder='搜索商品' ></input>
+                <input type='search'  id='search' style={{
+                    width:'70%',height:'30px',textAlign:'center',margin:'15px 0 0 15%',borderRadius:'10px',border:'none'
+                }} placeholder='搜索商品'  onChange={(e)=>this.changeEvent(e)}></input>
+                <button style={{float:'right',width:'30px',height:'30px',
+                    backgroundColor:'#FFC125 ' ,border:'none',margin:'15px 7px 0 0',borderRadius:'3px'
+
+                }} onClick={(e)=>{this.fetch_select(e)}}>
+                        <Icon key="0" type="search" style={{ color:'white'}} />
+                </button> 
+
                
                              
                 {this.state.data.map((item,key)=>(
@@ -77,7 +84,7 @@ export default class AppGood extends Component {
                
             </div>
             <div id='footer'>
-                        <Link to='/'>
+                        <Link to='/apphome'>
                         <Box src='/img/首页.png' title='首页' />
                         </Link>
                         <Link to='/appaction'>
@@ -101,4 +108,27 @@ export default class AppGood extends Component {
             
         )
     }
+    changeEvent(e){
+        this.setState({value:e.target.value})      
+    }
+    fetch_select = (e)=>{
+        let data = {
+            search:''
+        };
+        let search=this.state.value
+        data.search=search
+        console.log(data.search)
+        data.type = 'select';
+        fetch('https://daitianfang.1459.top/api/v1/goods?id=all',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },mode:"cors",
+            body: JSON.stringify(data)
+        }).then(req=>req.json()).then(data=>{
+            this.setState({
+                data:data
+            })
+        })
+    }   
 }

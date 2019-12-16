@@ -15,14 +15,14 @@ export default class AppHome extends Component {
                 <div>
                 <Header/>
                 <div>
-                <Route path='/'   exact component={Main}/>
+                <Route path='/apphome'    component={Main}/>
                     <Route path='/game'   component={Game}/>
                     <Route path='/animat'  component={Animat}/>
                     <Route path='/comic'  exact component={Comic}/>
                 </div>
 
                 <div id='footer'>
-                        <Link to='/'>
+                        <Link to='/apphome'>
                         <Box src='/img/首页.png' title='首页' />
                         </Link>
                         <Link to='/appaction'>

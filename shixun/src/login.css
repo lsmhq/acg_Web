@@ -1,0 +1,114 @@
+.nav{
+    width:100%;
+    background-color: rgb(255, 0, 157);
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: 1000;
+    color: white;
+}
+.bg_login{
+    width: 100%;
+}
+.logo{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.input{
+    width: 80%;
+    height: 50px;
+    border: none;
+    outline: none;
+    text-indent: 20px;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(77, 77, 77);
+    font-size: 20px;
+}
+.input_btn{
+    width: 80%;
+    height: 50px;
+    background-color: rgb(0, 180, 204);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    margin-left: 10%;
+    cursor: pointer;
+    font-size: 20px;
+    color:white;
+    transition: all linear 0.2s;
+}
+.input_btn:focus{
+    transition: all linear 0.2s;
+    background-color: rgb(0, 84, 153);
+}
+#alert{
+    width: 81%;
+    position: absolute;
+    left: 10%;
+    height: 220px;
+    background-color: rgb(255, 209, 200);
+    z-index: 50;
+    border-radius: 5px;
+    display: none;
+}
+#alert>img{
+    margin-left: 35%;
+}
+#alert>span{
+    display: block;
+    margin-top: 20px;
+    font-size: large;
+    width: 100%;
+    text-align: center;
+}
+#check{
+    display: none;
+    position: absolute;
+    width: 100%;
+    color: tomato;
+    text-align: center;
+    font-size: 15px;
+}
+
+#pass{
+    position: absolute;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    top: 0px;
+    right: 0px;
+    background-color: rgb(139, 0, 81);
+    cursor: pointer;
+    color: white;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.waves{
+    position:relative;
+    cursor:pointer;
+    display:inline-block;
+    overflow:hidden;
+    text-align: center;
+    -webkit-tap-highlight-color:transparent;
+    z-index:1;
+}
+.waves .waves-animation{
+    position:absolute;
+    border-radius:50%;
+    width:25px;
+    height:25px;
+    opacity:0;
+    background:rgba(255,255,255,0.3);
+    transition:all 0.7s ease-out;
+    transition-property:transform, opacity, -webkit-transform;
+    -webkit-transform:scale(0);
+    transform:scale(0);
+    pointer-events:none
+}
