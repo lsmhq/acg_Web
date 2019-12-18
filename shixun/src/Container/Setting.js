@@ -46,7 +46,7 @@ class Setting extends Component {
                     >省流模式</List.Item>
                     <Link to='/person'><List.Item style={{marginTop:'5%'}}>爱好设置</List.Item></Link>
                     <Link to='/address'><List.Item style={{marginTop:'5%'}}>收货地址</List.Item></Link>
-                    <Link to='/about'><List.Item style={{marginTop:'5%'}}>关于我们</List.Item></Link>
+                    <Link to='/aboutus'><List.Item style={{marginTop:'5%'}}>关于我们</List.Item></Link>
                     
                 </List>
                     

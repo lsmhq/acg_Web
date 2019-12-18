@@ -78,7 +78,7 @@ export default class ShopCar extends Component {
                             width:"60%",
                             float:'left'
                         }}>
-                            总价：{}
+                            总价：100000元
                             
                         </p>
                         <button style={{width:'30%',backgroundColor:'blue',float:'right',

@@ -23,7 +23,7 @@ export default class AppGood extends Component {
         
         return (
             
-            <div>
+            <div style={{backgroundImage:'url("/img/storebg.png")'}}>
                 
                  
                 <Router>
@@ -38,11 +38,8 @@ export default class AppGood extends Component {
                             <img  src='/img/购物车.png' style={{width:'40%',heightL:'40%',float:"right"}}  alt=''/>
                         </Link>
                         
-                          
-                        
-                        </div>
-                       
-                        
+                
+                        </div>                        
                     }
                     >商城</NavBar>
                 <div>
@@ -55,11 +52,9 @@ export default class AppGood extends Component {
                 }} onClick={(e)=>{this.fetch_select(e)}}>
                         <Icon key="0" type="search" style={{ color:'white'}} />
                 </button> 
-
-               
-                             
+             
                 {this.state.data.map((item,key)=>(
-                        <ul style={{padding:'0',}} key={key}>                           
+                        <ul style={{padding:'0',margin:'0 auto',marginBottom:'-9000px'}} key={key}>                           
                                 <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                     <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
@@ -81,7 +76,7 @@ export default class AppGood extends Component {
                         </ul>    
                     ))
                 }
-               
+                  
             </div>
             <div id='footer'>
                         <Link to='/apphome'>
@@ -97,12 +92,13 @@ export default class AppGood extends Component {
                             <Box src='/img/个人中心.png' title='个人' />
                         </Link>
                         
-                        
-
+            
                     
                 </div>
             </Router>
+            <div id='abc' style={{width:'100%',height:'10000px'}}>
 
+            </div>
                 
             </div>
             
@@ -117,7 +113,6 @@ export default class AppGood extends Component {
         };
         let search=this.state.value
         data.search=search
-        console.log(data.search)
         data.type = 'select';
         fetch('https://daitianfang.1459.top/api/v1/goods?id=all',{
             method: 'POST',

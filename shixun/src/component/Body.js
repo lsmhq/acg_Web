@@ -17,7 +17,7 @@ export default class Body extends Component {
                         }} key={key}>                           
                                 <Link to={'/articlemsg/'+item.id} style={{fontSize:'12px',}}>
                                     <li style={{height:'90px' ,width:'100%'}}>
-                                        <img src={"https:\\daitianfang.1459.top"+item.images+"0.jpg"} style={{width:'120px',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
+                                        <img src={"https:\\daitianfang.1459.top"+item.images} style={{width:'120px',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
                                         <h3 style={{}}>
                                         {item.auther}                               
                                         </h3> 

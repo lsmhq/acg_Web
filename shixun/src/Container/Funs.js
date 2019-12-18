@@ -76,7 +76,7 @@ export default class Funs extends Component {
         fetch('https://daitianfang.1459.top/api/v1/fans?id='+this.props.match.params.id)
         .then((res)=>res.json())
         .then((res)=>{
-            this.setState({data:res.data});
+            this.setState({data:res.data.data});
         })
     }
 }

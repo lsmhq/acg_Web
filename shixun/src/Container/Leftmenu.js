@@ -24,7 +24,7 @@ export default class Leftmenu extends Component {
     render() {
         if(this.state.data.length===0){
             return(
-                <div>
+                <div className='menu0'>
 
                 
                     <div>
@@ -42,17 +42,18 @@ export default class Leftmenu extends Component {
                      <Link to='/person'>个人中心</Link>
                      </ul>
                      <ul className='menu2'>
+                     <Link to='/appgood'>商城</Link>
+                     </ul>
+                     <ul className='menu2'>
                      <Link to='/concern'>关注</Link>
                      </ul>
                      <ul className='menu2'>
                      <Link to='/funs'>粉丝</Link>
                      </ul>
                      <ul className='menu2'>
-                     <Link to='/leftmenu'>收藏</Link>
+                     <Link to='/leftmenu'>关于我们</Link>
                      </ul>
-                     <ul className='menu2'>
-                     <Link to='/appgood'>商城</Link>
-                     </ul>
+                    
                  </div>
                  <div>
                  <Link to = '/setting'><img src='/img/setting.png' className='menu3'  alt=''/></Link>
@@ -63,7 +64,7 @@ export default class Leftmenu extends Component {
         }
         else{
             return (
-                <div>
+                <div className='menu0'>
                    <div>
                        
                   
@@ -72,11 +73,14 @@ export default class Leftmenu extends Component {
                            <div className='menu1'>
                                 <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } style={{width:'70px',height:'70px',borderRadius:'50%'}} alt=''/>
                                 <p style={{color:'black',fontSize:'17px'}}>昵称：{item.name}</p>
-                                <p style={{color:'orange',fontSize:'16px'}}>个性签名：{item.signatrue}</p>
+                                <p style={{color:'black',fontSize:'16px'}}>个性签名：{item.signatrue}</p>
                              </div>
                              <div className='menu1'>
                             <ul className='menu2'>
                             <Link to='/apphome'>首页</Link>
+                            </ul>
+                            <ul className='menu2'>
+                            <Link to='/appgood'>商城</Link>
                             </ul>
                             <ul className='menu2'>
                             <Link to='/person'>个人中心</Link>
@@ -88,11 +92,9 @@ export default class Leftmenu extends Component {
                             <Link to={'/funs/'+item.id}>粉丝</Link>
                             </ul>
                             <ul className='menu2'>
-                            <Link to='/leftmenu'>收藏</Link>
+                            <Link to='/aboutus'>关于我们</Link>
                             </ul>
-                            <ul className='menu2'>
-                            <Link to='/appgood'>商城</Link>
-                            </ul>
+                            
                         </div> 
                         </div>
                             

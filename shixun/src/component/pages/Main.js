@@ -2,49 +2,42 @@ import React, { Component } from 'react'
 import Body from '../Body';
 import { WingBlank, Carousel} from 'antd-mobile';
 export default class Main extends Component {
-
-        state = {
-        data: [],
-        imgHeight: 176,
-
-      }
-      componentDidMount() {
-        // simulate img loading
-        setTimeout(() => { 
-          this.setState({
-            data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI','TekJlZRVCjLFexlOCuWn'],
-          });
-        }, 100);
-      }
     render() {
         return (
             <div>
-                 <WingBlank style={{margin:'0' ,marginTop:'120px' }}>
-                    <Carousel
-                    autoplay={true}
-                    infinite
-                    beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                    afterChange={index => console.log('slide to', index)}
-                    >
-                    {this.state.data.map(val => (
-                        <a
-                        key={val}
-                        href="http://www.alipay.com"
-                        style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+                 <WingBlank style={{margin:'0' ,marginTop:'120px',zIndex:'0'
+                }}>
+                 <Carousel style={{
+                        background: '#fff',
+                        overflow: 'hidden',
+                    }}
+                        frameOverflow="visible"
+                        cellSpacing={10}
+                        slideWidth={1}
+                        autoplay
+                        infinite
                         >
-                        <img
-                            src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-                            alt=""
-                            style={{ width: '100%', verticalAlign: 'top' }}
-                            onLoad={() => {
-                            // fire window resize event to change height
-                            window.dispatchEvent(new Event('resize'));
-                            this.setState({ imgHeight: 'auto' });
+                        {[1,2,3,4].map((val, index) => (
+                            <a
+                            key={val}
+                            style={{
+                                display: 'block',
+                                position: 'relative',
+                                
                             }}
-                        />
-                        </a>
-                    ))}
-                    </Carousel>
+                            >
+                            <img
+                                src={`/img/lun${val}.jpg`}
+                                alt=""
+                                style={{ width: '100%', verticalAlign: 'top',height:'180px' }}
+                                onLoad={() => {
+                                window.dispatchEvent(new Event('resize'));
+                                }}
+                            />
+                            </a>
+                        ))}
+                        </Carousel>
+
                 </WingBlank>
 
                 

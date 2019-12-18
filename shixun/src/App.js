@@ -18,6 +18,7 @@ import Signin from './Container/Signin';
 import Signup from './Container/Signup';
 import Activate from './Container/Activate';
 import Searchmsg from './Container/Searchmsg';
+import About from './Container/About';
 
 export default class App extends Component {
     render() {
@@ -41,6 +42,7 @@ export default class App extends Component {
                 <Route path={'/logup'} component={Signup}/>
                 <Route path={'/email'} component={Activate}/>
                 <Route path='/searchmsg' component={Searchmsg}/>
+                <Route path='/aboutus' component={About} />
              
                  
             </Router>

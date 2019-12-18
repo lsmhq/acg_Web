@@ -8,14 +8,32 @@ const data = [
 
 ];
 export default class AppAction extends Component {
-    state = {
-        files: data,
-        multiple: false,
+    constructor(){
+        super();
+        this.state = {
+            files: data,
+            multiple: false,
+            cookie_obj:this.cookieToObj(document.cookie),
+            time:time
+        }
+        var today = new Date(),
+            time = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    }
+    cookieToObj=(cookie)=>{
+        let obj = {};
+        if(cookie){
+            cookie.split(';').map(item=>{
+                item = item.trim();
+                let arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            });
+        }
+        return obj;
+        
       }
       onChange = (files, type, index) => {
-        console.log(files, type, index);
         this.setState({
-          files,
+          files:files,
         });
       }
       onSegChange = (e) => {
@@ -54,13 +72,19 @@ export default class AppAction extends Component {
                     <input placeholder="不要超过20个字" className='actiona1' maxLength='20' id='title' />
                     <div>
                     <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}}>文章类型：</p>
-                    <Checkbox style={{marginRight:'15px',marginLeft:'20px'}} >Comic</Checkbox>
-                    <Checkbox style={{marginRight:'15px'}}>Game</Checkbox>
-                    <Checkbox style={{marginRight:'15px'}}>Animate</Checkbox>
-                    <Checkbox style={{marginRight:'0px'}}>Activate</Checkbox>
+                    <select id='type' style={{marginLeft:'30px' ,width:'100px',height:'27px'}}>
+                        <option value="comic">comic</option>
+                        <option value="game">game</option>
+                        <option value="animation">animation</option>
+                        <option value="activate">activate</option>
+                    </select>
+                    {/* <Checkbox style={{marginRight:'15px',marginLeft:'20px' }} >comic</Checkbox>
+                    <Checkbox style={{marginRight:'15px'}}>game</Checkbox>
+                    <Checkbox style={{marginRight:'15px'}}>animation</Checkbox>
+                    <Checkbox style={{marginRight:'0px'}}>activate</Checkbox> */}
                     </div>
-                    <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}} id='context'>内容：</p>
-                    <textarea placeholder='请输入文章内容' className='actiona2'/>
+                    <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}} >内容：</p>
+                    <textarea placeholder='请输入文章内容' id='context' className='actiona2'/>
                 </div>
                 
                 <div style={{textAlign:"center"}}>
@@ -90,18 +114,23 @@ export default class AppAction extends Component {
     fetch_add(){
         let data = {};
         data.type='insert_font';
-        let sex = ReactDOM.findDOMNode(document.getElementById('sex')).value;
-        let hobby = ReactDOM.findDOMNode(document.getElementById('hobby')).value;
-        let hometown = ReactDOM.findDOMNode(document.getElementById('hometown')).value;
-        let birthday = ReactDOM.findDOMNode(document.getElementById('birthday')).value;
-        let signatrue = ReactDOM.findDOMNode(document.getElementById('signatrue')).value;
-        data.sex = sex;
-        data.hobby = hobby;
-        data.hometown = hometown;
-        data.birthday = birthday;
-        data.signatrue =signatrue;
-        data.id=this.state.cookie_obj.userid;
-        fetch('https://daitianfang.1459.top/api/v1/',{
+        let title = ReactDOM.findDOMNode(document.getElementById('title')).value;
+        let context = ReactDOM.findDOMNode(document.getElementById('context')).value;
+        let contexttype=document.getElementById('type').value;
+        let images=this.state.files[0].url.split(';')[1]
+        let images_type=this.state.files[0].url.split(';')[0]
+        let timetamp=this.state.time
+        let auther=decodeURIComponent(atob(this.state.cookie_obj.username)); 
+        let autherid=this.state.cookie_obj.userid
+        data.timetamp=timetamp
+        data.auther=auther
+        data.autherid=autherid
+        data.images_type=images_type
+        data.images=images
+        data.contexttype=contexttype
+        data.title = title;
+        data.context = context;
+        fetch('https://daitianfang.1459.top/api/v1/chapter',{
             method:'POST',
             mode:'cors',
             headers:{'Content-Type':'application/json'},
@@ -111,11 +140,11 @@ export default class AppAction extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    alert('更改成功')
+                    alert('发布成功')
                     break;
                 }
                 case 'error':{
-                    alert('更改失败')
+                    alert('发布失败')
                     break;
                 }
             }

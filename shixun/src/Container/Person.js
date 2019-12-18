@@ -9,7 +9,9 @@ export default class Person extends Component {
         super();
         this.state = {
             data: [],
-            cookie_obj:this.cookieToObj(document.cookie)
+            cookie_obj:this.cookieToObj(document.cookie),
+            fans:0,
+            fouce:0
             
         }
     }
@@ -31,7 +33,7 @@ export default class Person extends Component {
     render() {
         if(this.state.data.length===0){
             return(
-                <div>
+                <div className='person0'>
                     {/* 顶栏 */}
                     <NavBar
                         style={{backgroundColor:'rgb(255,64,129)'}}
@@ -95,7 +97,7 @@ export default class Person extends Component {
         }
         else{
             return (
-                <div>                               
+                <div className='person0'>                               
                      {/* 顶栏 */}
                      <NavBar
                         style={{backgroundColor:'rgb(255,64,129)'}}
@@ -109,30 +111,24 @@ export default class Person extends Component {
                     <div key={key}>
                     <div>                            
                     {/* 个人资料 */}
-                        <div className="container">
-                        <div className="bg" style={{
-                            
-                        }}>
-                        
-                        </div>
-                        <div className="bg-mask"></div>                                                     
+                        <div className="container">                                                   
                             <div className="content">
                                 <img className="avatar" src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } alt='' />
                                 <div className="info">
-                                <p>{item.name}</p>
-                                <p>{item.signatrue}</p>
+                                <p style={{color:'rgb(255,64,129)',fontWeight:'bold'}}>{item.name}</p>
+                                <p style={{color:'rgb(255,64,129)'}}>{item.signatrue}</p>
                                 </div>
                             </div>
                         </div>
                         {/* 粉丝关注等级 */}
-                        <div style={{backgroundColor:'rgb(0, 180, 204)',color:'black',
+                        <div style={{
                             width:'100%',height:'50px'
                         }}>
                             <div className='person2'>
-                            <Link to={'/funs/'+item.id}  style={{fontWeight:'bold',color:'white'}}>粉丝 <br/> {item.fans} </Link>
+                            <Link to={'/funs/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
                             </div>
                             <div className='person2'>
-                            <Link to={'/concern/'+item.id} style={{fontWeight:'bold',color:'white'}}>关注 <br/>  {item.fouce}  </Link>
+                            <Link to={'/concern/'+item.id} style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>关注 <br/>  {this.state.fouce}  </Link>
                             </div>
                             <div className='person2'>
                                 等级 <br/>  {item.level }
@@ -167,7 +163,7 @@ export default class Person extends Component {
                             
                                
                             <input type='button' value='提交' id='update' name='' onClick={(e)=>{this.fetch_person(e)}}
-                                style={{backgroundColor:'#FFC1C1',border:'none',width:'50px',height:'25px'}}
+                                style={{backgroundColor:'#FFC1C1',border:'none',width:'50px',height:'25px',marginBottom:'70px'}}
                             />
                         </form>
 
@@ -245,5 +241,16 @@ export default class Person extends Component {
         .then((res)=>{
             this.setState({data:res.data});
         })
+        fetch(`https://daitianfang.1459.top/api/v1/fans?id=${this.state.cookie_obj.userid}`).then(req=>req.json()).then(data=>{
+        this.setState({
+                fans:data.data.count
+            })
+        })
+        fetch(`https://daitianfang.1459.top/api/v1/fouce?id=${this.state.cookie_obj.userid}`).then(req=>req.json()).then(data=>{
+            this.setState({
+                fouce:data.data.count
+            })
+        })
+        
     }
 }

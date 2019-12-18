@@ -26,7 +26,7 @@ export default class Concern extends Component {
                         <ul style={{padding:'0',border: '1px solid #cfcfcf',
                         marginBlockStart:'0' ,margin:'0px 0px 10px 0px'
                         }} key={key}>                           
-                                <Link to={''} style={{fontSize:'12px',}}>
+                                
                                     <li style={{height:'90px' ,width:'100%'}}>
                                     <button className='concern' onClick={(e)=>{this.fetch_concern(e)}}>取消关注</button>  
                                         <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } 
@@ -39,14 +39,14 @@ export default class Concern extends Component {
                                             {item.foucename} <br/>
                                             <br/>   
 
-                                            <span style={{fontSize:'12px'}}>
+                                            <span style={{fontSize:'12px'}} id='fouceid'>
                                                 {item.fouceid}
                                             </span>
                                            
                                         </p>                                                                              
                                          
                                     </li>                                  
-                                </Link>                                                                                                               
+                                                                                                                                          
                         </ul>    
                     ))
                 }   
@@ -74,14 +74,17 @@ export default class Concern extends Component {
     fetch('https://daitianfang.1459.top/api/v1/fouce?id='+this.props.match.params.id)
     .then((res)=>res.json())
     .then((res)=>{
-        this.setState({data:res.data});
+        this.setState({data:res.data.data});
     })
   }
   fetch_concern(){
     let data = {};
     data.type='del';
-      
-    data.id=this.state.fouceid;
+    let fouceid=ReactDOM.findDOMNode(document.getElementById('fouceid')).innerText;
+    data.id=this.props.match.params.id
+    data.fouceid=fouceid
+    console.log(data.fouceid)
+    console.log(data.id)
     fetch('https://daitianfang.1459.top/api/v1/fouce',{
         method:'POST',
         mode:'cors',
