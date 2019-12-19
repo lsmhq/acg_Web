@@ -200,6 +200,7 @@ export default class Person extends Component {
             document.getElementsByClassName('avatar')[0].src = reader.result;
             let data = {};
             data.type = 'update_img';
+            data.id=this.state.cookie_obj.userid
             data.images = reader.result;
             fetch('https://daitianfang.1459.top/api/v1/person',{
                 method:'POST',

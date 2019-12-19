@@ -103,7 +103,7 @@ export default class ShopCar extends Component {
             
                 backgroundColor:'white'
             }}>
-            <p style={style} id='count'>{this.state.count}</p>
+            <p style={style} id='count'>总价：{this.state.count}</p>
                         <button 
                              onClick={(e)=>{this.fetch_bug(e)}}
                             style={{width:'30%',backgroundColor:'blue',float:'right',
