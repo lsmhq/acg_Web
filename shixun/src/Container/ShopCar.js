@@ -15,7 +15,8 @@ export default class ShopCar extends Component {
             src:'',
             fun:()=>{
 
-            }
+            },
+            count:0
             
         }
     }
@@ -25,9 +26,23 @@ export default class ShopCar extends Component {
         .then((res)=>{
             this.setState({data:res.data});
         })
+        let num = 0;
+        let arr = JSON.parse(localStorage.getItem('ShopCar'));
+        arr.map(item=>{
+            num += item.price;
+        })
+        this.setState({
+            count:num
+        })
     }
     render() {
-        
+        let style = {
+            color:'orange',
+            marginTop:'15px',
+            fontSize:"16px",
+            width:"60%",
+            float:'left'
+        }
         return (
          
             <div>
@@ -88,16 +103,7 @@ export default class ShopCar extends Component {
             
                 backgroundColor:'white'
             }}>
-                        <p style={{
-                            color:'orange',
-                            marginTop:'15px',
-                            fontSize:"16px",
-                            width:"60%",
-                            float:'left'
-                        }}>
-                            
-                            
-                        </p>
+            <p style={style} id='count'>{this.state.count}</p>
                         <button 
                              onClick={(e)=>{this.fetch_bug(e)}}
                             style={{width:'30%',backgroundColor:'blue',float:'right',
