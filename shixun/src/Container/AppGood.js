@@ -28,7 +28,8 @@ export default class AppGood extends Component {
                  
                 <Router>
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
@@ -42,7 +43,7 @@ export default class AppGood extends Component {
                         </div>                        
                     }
                     >商城</NavBar>
-                <div>
+                <div style={{marginTop:'45px'}}>
                 <input type='search'  id='search' style={{
                     width:'70%',height:'30px',textAlign:'center',margin:'15px 0 0 15%',borderRadius:'10px',border:'none'
                 }} placeholder='搜索商品'  onChange={(e)=>this.changeEvent(e)}></input>
@@ -52,30 +53,32 @@ export default class AppGood extends Component {
                 }} onClick={(e)=>{this.fetch_select(e)}}>
                         <Icon key="0" type="search" style={{ color:'white'}} />
                 </button> 
-             
-                {this.state.data.map((item,key)=>(
-                        <ul style={{padding:'0',margin:'0 auto',marginBottom:'-9000px'}} key={key}>                           
-                                <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
-                                    <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
-                                    margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
-                                        <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
-                                        
-                                        <h4 style={{margin:'20px 0 0 10%'}}>
-                                            商品名称：{item.name}
-                                            <br/>
-                                            <br/>
-                                            <span style={{color:"orange"}}>
-                                                价格：{item.price}元
-                                            </span>
-                                        </h4>
-                                        <h4 style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</h4>
+                <div style={{marginBottom:'-8000px'}}>
+                    {this.state.data.map((item,key)=>(
+                            <ul style={{padding:'0',margin:'0 auto'}} key={key}>                           
+                                    <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
+                                        <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
+                                        margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
+                                            <img src={"https:\\daitianfang.1459.top"+item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
+                                            
+                                            <h4 style={{margin:'20px 0 0 10%'}}>
+                                                商品名称：{item.name}
+                                                <br/>
+                                                <br/>
+                                                <span style={{color:"orange"}}>
+                                                    价格：{item.price}元
+                                                </span>
+                                            </h4>
+                                            <h4 style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</h4>
 
-                                        
-                                    </li>                                  
-                                </Link>                                                                                                               
-                        </ul>    
-                    ))
-                }
+                                            
+                                        </li>                                  
+                                    </Link>                                                                                                               
+                            </ul>    
+                        ))
+                    }
+                </div>
+                
                   
             </div>
             <div id='footer'>

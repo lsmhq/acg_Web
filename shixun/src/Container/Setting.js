@@ -18,12 +18,13 @@ class Setting extends Component {
         return(
             <div>
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
                     >设置</NavBar>
-                <div>
+                <div style={{marginTop:'45px'}}>
                 <List>
                     <List.Item 
                     extra={<Switch
@@ -62,6 +63,7 @@ class Setting extends Component {
     }
     toLogin = (e)=>{
         this.props.history.push('/');
+        
     }
 }
 const Se = createForm()(Setting);

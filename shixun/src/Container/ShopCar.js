@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import {Link,HashRouter as Router,} from 'react-router-dom';
 import {Icon,NavBar} from "antd-mobile";
 import MyCood from './MyCood'
+import Alert from '../component/Alert';
+import ReactDom from 'react-dom';
+
 export default class ShopCar extends Component {
     constructor(){
         super();
         this.state = {
-            data: []
+            data: [],
+            msg:'',
+            btn:'',
+            src:'',
+            fun:()=>{
+
+            }
             
         }
     }
@@ -24,13 +33,21 @@ export default class ShopCar extends Component {
             <div>
                 <Router>
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}                                                               
                     >购物车</NavBar>
                 <div>
+                <Alert
+                        msg={this.state.msg}
+                        src={this.state.src}
+                        toPath={this.state.fun}
+                        btn={this.state.btn}
+                    />
                 <MyCood/>
+                
 
 
                 <hr/>
@@ -42,7 +59,7 @@ export default class ShopCar extends Component {
                                 <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                     <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
-                                        <img src={"https:\\daitianfang.1459.top"+item.path+".jpg"} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
+                                        <img src={"https:\\daitianfang.1459.top"+item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         
                                         <h4 style={{margin:'20px 0 0 10%'}}>
                                             商品名称：{item.name}
@@ -78,15 +95,29 @@ export default class ShopCar extends Component {
                             width:"60%",
                             float:'left'
                         }}>
-                            总价：100000元
+                            
                             
                         </p>
-                        <button style={{width:'30%',backgroundColor:'blue',float:'right',
+                        <button 
+                             onClick={(e)=>{this.fetch_bug(e)}}
+                            style={{width:'30%',backgroundColor:'blue',float:'right',
                               height: '50px',border:'none'}}>结算</button>         
-                </div>
+                        </div>
             </Router>
             </div>
                 
         )
+    }
+    fetch_bug(){
+        this.setState({
+            msg:'确认购买',
+            btn:'确认',
+            src:'/images/success.png',
+            fun:()=>{
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+            }
+        },()=>{
+            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+        })   
     }
 }

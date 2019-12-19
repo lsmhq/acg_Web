@@ -42,15 +42,15 @@ export default class Comment extends Component {
     render() {
         const {comment} = this.props
         return (
-            <div className='comment'>
-                <div className='comment-user'>
+            <div className='comment' >
+                <div className='comment-user'  style={{zIndex:'-1'}}>
                     <span className='comment-username'>{comment.username}</span> ：
                 </div>
-                <p>{comment.content}</p>
-                <span className='comment-createdtime'>
+                <p style={{zIndex:'-1'}}>{comment.content}</p>
+                <span className='comment-createdtime' style={{zIndex:'-1'}}>
                     {this.state.timeString}
                 </span>
-                <span className='comment-delete' onClick={this.handleDeleteComment.bind(this)}>删除</span>
+                <span className='comment-delete'  onClick={this.handleDeleteComment.bind(this)} >删除</span>
             </div>
         )
     }

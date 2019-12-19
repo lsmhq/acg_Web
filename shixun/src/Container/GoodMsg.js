@@ -2,12 +2,22 @@ import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
 import {Link,HashRouter as Router,} from 'react-router-dom';
 import CommentApp from '../Comments/CommentApp'
+import Alert from '../component/Alert';
+import ReactDom from 'react-dom';
+
 export default class GoodMsg extends Component {
     
      constructor(){
         super();
         this.state = {
-            data: []
+            data: [],
+            a:localStorage.length,
+            msg:'',
+            btn:'',
+            src:'',
+            fun:()=>{
+
+            }
         }
     }
    
@@ -16,10 +26,13 @@ export default class GoodMsg extends Component {
         
         
         return (
-            <div>
+            <div style={{backgroundImage:'url("/img/background3.png")'}}>
                 <Router>
-                <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                <NavBar 
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'
+                              
+                }}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
@@ -39,7 +52,13 @@ export default class GoodMsg extends Component {
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={"https:\\daitianfang.1459.top"+item.path+".jpg" } alt='' style={{width:'100%',height:'180px',}} />
+                            <img src={"https:\\daitianfang.1459.top"+item.path } alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
+                            <Alert
+                                msg={this.state.msg}
+                                src={this.state.src}
+                                toPath={this.state.fun}
+                                btn={this.state.btn}
+                            />
                             <div style={{margin:'20px 30px'}}>
                             <h2 style={{color:'orange'}}>￥{item.price}元</h2>   
                             <h3>商品名称：{item.name}</h3>
@@ -63,13 +82,13 @@ export default class GoodMsg extends Component {
                             backgroundColor:'white'
                         }}>
 
-                        <Link to='/shopcar'>
-                            <button style={{width:'50%',backgroundColor:'red',color:'white',
-                            height: '50px',border:'none'}}>加入购物车</button>  
-                        </Link>
+                        
+                            <button   onClick={()=>this.addgood()} style={{width:'50%',backgroundColor:'red',color:'white',
+                            height: '50px',border:'none',zIndex:'1'}}>加入购物车</button>  
+                        
 
                             <button style={{width:'50%',backgroundColor:'orange',color:'white',
-                            height: '50px',border:'none'}}>立即购买</button>         
+                            height: '50px',border:'none' ,zIndex:'1'}}  onClick={()=>this.buy()}>立即购买</button>         
                         </div>
                         </div>
                     ))
@@ -82,10 +101,34 @@ export default class GoodMsg extends Component {
             </div>
         )
     }
+    buy(){
+        this.setState({
+            msg:'确认购买',
+            btn:'确认',
+            src:'/images/success.png',
+            fun:()=>{
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+            }
+        },()=>{
+            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+        })   
+    }
+    addgood(){
+
+            if(localStorage.getItem('ShopCar')){
+                
+                let arr_data = JSON.parse(localStorage.getItem('ShopCar'));
+                arr_data.push(this.state.data[0]);
+                localStorage.setItem('ShopCar',JSON.stringify(arr_data));
+            }else{
+                localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
+            }
+    }
     componentDidMount(){
         fetch('https://daitianfang.1459.top/api/v1/goods?id='+this.props.match.params.id)
         .then((res)=>res.json())
         .then((res)=>{
+            
             this.setState({data:res.data});
         })
     }

@@ -8,24 +8,25 @@ export default class Signup extends Component {
         this.state = {
             msg:'',
             btn:'',
-            fun:()=>{}
+            fun:()=>{},
+            src:''
         }
     }
     render() {
         return (
-            <div className='bg_login'>
+            <div className='login_bg'>
                 <Nav title='注册'/>
-                <div className='logo'>
+                <div className='login_logo animated fadeInDown'>
                     <img src='/images/logo.png' width='100px' alt=''/>
                 </div>
-                <Alert msg={this.state.msg} toPath={()=>{this.state.fun()}} btn={this.state.btn}/>
-                <input type='email' placeholder='邮箱      name@qq.com' className='input' name='email' autoComplete='off'/>
-                <input type='text' placeholder='用户名' className='input' name='username' autoComplete='off'/>
-               <input type='password' placeholder='密码' className='input' id='password' name='password' onKeyUp={(e)=>{this.check(e)}}/>
-               <input type='password' placeholder='确认密码' className='input' onKeyUp={(e)=>{this.check(e)}} id='password_check'/>
-                <span id='check'>{'两次密码不一致'}</span>
-               <input type='button' value='注册' className='input_btn' id='logup_btn' onClick={(e)=>{this.fetch_logup(e)}}/>
-               <input type='button' value='返回' className='input_btn' onClick={(e)=>{this.toLogin(e)}}/>
+                <Alert msg={this.state.msg} toPath={()=>{this.state.fun()}} btn={this.state.btn} src={this.state.src}/>
+                <input type='email' placeholder='邮箱      name@qq.com' className='login_input animated fadeInDown' name='email' autoComplete='off'/>
+                <input type='text' placeholder='用户名' className='login_input animated fadeInDown' name='username' autoComplete='off'/>
+               <input type='password' placeholder='密码' className='login_input animated fadeInDown' id='password' name='password' onKeyUp={(e)=>{this.check(e)}}/>
+               <input type='password' placeholder='确认密码' className='login_input animated fadeInDown' onKeyUp={(e)=>{this.check(e)}} id='password_check'/>
+                <span id='login_check' className='animated shake'>{'两次密码不一致'}</span>
+               <input type='button' value='注册' className='input_btn animated fadeInDown' id='logup_btn' onClick={(e)=>{this.fetch_logup(e)}}/>
+               <input type='button' value='返回' className='input_btn animated fadeInDown' onClick={(e)=>{this.toLogin(e)}}/>
             </div>
         )
     }
@@ -36,11 +37,11 @@ export default class Signup extends Component {
         let value =  ReactDom.findDOMNode(document.getElementById('password_check')).value;
         let value1 = ReactDom.findDOMNode(document.getElementById('password')).value;
         if(value === value1){
-            ReactDom.findDOMNode(document.getElementById('check')).style.display='none';
+            ReactDom.findDOMNode(document.getElementById('login_check')).style.display='none';
             ReactDom.findDOMNode(document.getElementById('logup_btn')).disable=true;
         }else{
-            ReactDom.findDOMNode(document.getElementById('check')).style.display='block';
-            ReactDom.findDOMNode(document.getElementById('check')).disable=false;
+            ReactDom.findDOMNode(document.getElementById('login_check')).style.display='block';
+            ReactDom.findDOMNode(document.getElementById('login_check')).disable=false;
         }
     }
     fetch_logup=(e)=>{
@@ -54,10 +55,10 @@ export default class Signup extends Component {
                 msg:'以上输入框未填完整',
                 btn:'确认',
                 fun:()=>{
-                    ReactDom.findDOMNode(document.getElementById('alert')).style.display='none';
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
                 }
             },()=>{
-                ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
             })
         }else{
             fetch('https://daitianfang.1459.top/acg',{
@@ -76,19 +77,20 @@ export default class Signup extends Component {
                             sessionStorage.setItem('username',data.username);
                             sessionStorage.setItem('email',data.email);
                             this.props.history.push('/email');
-                        }
+                        },
+                        src:'/images/success.png'
                     },()=>{
-                        ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
                     })
                 }else{
                     this.setState({
                         msg:text,
                         btn:'确定',
                         fun:()=>{
-                            ReactDom.findDOMNode(document.getElementById('alert')).style.display='none';
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
                         }
                     },()=>{
-                        ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
                     })
                 }
             })

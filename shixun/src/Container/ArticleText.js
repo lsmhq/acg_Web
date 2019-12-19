@@ -16,9 +16,14 @@ export default class ArticleText extends Component {
                 return (<p key={index}
                     style={{
                         margin:'20px',
+                        marginTop:'30px',
                         fontSize:'14px',
+                        letterSpacing:'4px',
+                        fontFamily:'HYYaKuHeiW',
+                        lineHeight:'40px'
+                        
                     }}
-                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.text}</p>)
+                >&nbsp;&nbsp;&nbsp;{item.text}</p>)
                 })}
             </div>
         )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AppHome from './Container/AppHome'
 import {HashRouter as Router,Route} from 'react-router-dom'
-import AppGppd from './Container/AppGood';
+import AppGood from './Container/AppGood';
 import Person from './Container/Person'
 import AppAction from './Container/AppAction';
 import Funs from './Container/Funs';
@@ -19,13 +19,15 @@ import Signup from './Container/Signup';
 import Activate from './Container/Activate';
 import Searchmsg from './Container/Searchmsg';
 import About from './Container/About';
-
+import Address from './Container/Address';
+import './login.css';
+import  './animate.css';
 export default class App extends Component {
     render() {
         return (
             <Router>
                 <Route path='/apphome'  component={AppHome}/>
-                <Route path='/appgood' component={AppGppd}/>
+                <Route path='/appgood' component={AppGood}/>
                 <Route path='/person' component={Person}/>
                 <Route path='/appaction' component={AppAction}/>
                 <Route path='/funs/:id' component={Funs}/>
@@ -43,6 +45,7 @@ export default class App extends Component {
                 <Route path={'/email'} component={Activate}/>
                 <Route path='/searchmsg' component={Searchmsg}/>
                 <Route path='/aboutus' component={About} />
+                <Route path='/address' component={Address}/>
              
                  
             </Router>

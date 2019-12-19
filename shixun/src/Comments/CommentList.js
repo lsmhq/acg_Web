@@ -16,7 +16,7 @@ export default class CommentList extends Component {
     }
   render() {
     return (
-     <div>
+     <div >
          {this.props.comments.map((comment, i) =>
           <Comment
             comment={comment}

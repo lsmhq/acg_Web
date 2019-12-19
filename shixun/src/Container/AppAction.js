@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import {Link,HashRouter as Router,Route} from 'react-router-dom';
 import Box from '../component/Box';
-import {NavBar,Icon, Button,ImagePicker, WingBlank, SegmentedControl, Checkbox} from 'antd-mobile'
+import {NavBar,Icon, ImagePicker, WingBlank, } from 'antd-mobile'
 import ReactDOM from 'react-dom'
-
+import Alert from '../component/Alert';
+import ReactDom from 'react-dom';
 const data = [
 
 ];
@@ -14,7 +15,13 @@ export default class AppAction extends Component {
             files: data,
             multiple: false,
             cookie_obj:this.cookieToObj(document.cookie),
-            time:time
+            time:time,
+            msg:'',
+            btn:'',
+            src:'',
+            fun:()=>{
+
+            }
         }
         var today = new Date(),
             time = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -51,25 +58,34 @@ export default class AppAction extends Component {
             
             <div className='actiona0'>
                 <NavBar
-                style={{backgroundColor:'rgb(255,64,129)'}}
+                style={{backgroundColor:'rgb(255,64,129)',
+                position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'
+            }}
                 mode="white"
                 icon={<Icon type="left" />}
                 onLeftClick={() => window.history.back(-1)}
                 >动态</NavBar>
-                <p style={{fontFamily:'SimHei',fontSize:'18px' ,fontWeight:'bold' }}>添加图片：</p>
+                <p style={{fontFamily:'SimHei',fontSize:'18px' ,fontWeight:'bold' ,marginTop:'45px' ,paddingTop:'10px'}}>添加图片：</p>
                 <WingBlank>
                     
                     <ImagePicker
                     files={files}
                     onChange={this.onChange}
                     onImageClick={(index, fs) => console.log(index, fs)}
-                    selectable={files.length < 8}
+                    selectable={files.length < 1}
                     multiple={this.state.multiple}
                     />
                 </WingBlank>
+                <Alert
+                        msg={this.state.msg}
+                        src={this.state.src}
+                        toPath={this.state.fun}
+                        btn={this.state.btn}
+                    />
                 <div style={{marginTop:'10px'}}>
                     <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}}>标题：</p>
                     <input placeholder="不要超过20个字" className='actiona1' maxLength='20' id='title' />
+                    
                     <div>
                     <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}}>文章类型：</p>
                     <select id='type' style={{marginLeft:'30px' ,width:'100px',height:'27px'}}>
@@ -140,11 +156,29 @@ export default class AppAction extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    alert('发布成功')
+                    this.setState({
+                        msg:'发布成功',
+                        btn:'确认',
+                        src:'/images/success.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
                     break;
                 }
                 case 'error':{
-                    alert('发布失败')
+                    this.setState({
+                        msg:'发布失败',
+                        btn:'确认',
+                        src:'/images/failed.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
                     break;
                 }
             }

@@ -14,23 +14,28 @@ export default class Funs extends Component {
             <div>
                 {/* 顶栏 */}
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'
+                }}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
                     >我的粉丝</NavBar>
                 
                 {/* 我的粉丝 */}
+                <div style={{marginTop:'45px'}}>
                 {this.state.data.map((item,key)=>(
                         <ul style={{padding:'0',border: '1px solid #cfcfcf',
                         marginBlockStart:'0' ,margin:'0px 0px 10px 0px'
                         }} key={key}>                           
-                                <Link to={''} style={{fontSize:'12px',}}>
+                                
                                     <li style={{height:'90px' ,width:'100%'}}>
-                                        <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } 
+                                        <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } 
                                         style={{width:'60px',height:'60px', float:'left',borderRadius:'50%',
                                         margin:'15px 0px 10px 40px'}} alt=''/>
-                                        <p style={{margin:'20px 140px 5px 0px',float:'right',fontSize:'14px',fontWeight:'bold'}}>
+                                        <p style={{float:'right',fontSize:'14px',fontWeight:'bold',
+                                        width:'50%',overflow:'hidden',marginRight:'30px'
+                                        }}>
                                             {item.fanname} <br/>
                                             <br/>
                                             
@@ -42,10 +47,12 @@ export default class Funs extends Component {
                                       
                                        
                                     </li>                                  
-                                </Link>                                                                                                               
+                                                                                                                                           
                         </ul>    
                     ))
                 }   
+                </div>
+                
             
                             
                            

@@ -7,22 +7,23 @@ export default class Signin extends Component {
     constructor(){
         super();
         this.state = {
-            msg:'用户名或密码错误'
+            msg:'用户名或密码错误',
+            src:'',
         }
     } 
     render() {
         return (
-            <div className='bg_login'>
+            <div className='login_bg'>
                 <Nav title='登录'/>
-                <div className='logo'>
+                <div className='login_logo animated fadeInDown'>
                     <img src='/images/logo.png' width='100px' alt=''/>
                 </div>
-                <Alert msg={this.state.msg} toPath = {()=>{this.hidden()}}/>
-               <input type='text' placeholder='用户名' className='input' name='username' autoComplete='off'/>
-               <input type='password' placeholder='密码' className='input' name='password' autoComplete='off'/>
-               <input type='button' value='登录' className='input_btn' onClick={(e)=>{this.fetch_login(e)}} required/>
-               <input type='button' value='注册' className='input_btn' onClick={(e)=>{this.toLogup(e)}} required/>
-               <span id='pass' onClick={()=>{this.toMain()}}>跳过</span>
+                <Alert msg={this.state.msg} toPath = {()=>{this.hidden()}} src={this.state.src}/>
+               <input type='text' placeholder='用户名' className='login_input animated fadeInDown' name='username' autoComplete='off'/>
+               <input type='password' placeholder='密码' className='login_input animated fadeInDown' name='password' autoComplete='off'/>
+               <input type='button' value='登录' className='input_btn animated fadeInDown' onClick={(e)=>{this.fetch_login(e)}} required/>
+               <input type='button' value='注册' className='input_btn animated fadeInDown' onClick={(e)=>{this.toLogup(e)}} required/>
+               <span className='login_pass' onClick={()=>{this.toMain()}}>跳过</span>
             </div>
         )
     }
@@ -41,10 +42,10 @@ export default class Signin extends Component {
             this.setState({
                 msg:'用户名或密码不能为空'
             },()=>{
-                ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
             })
         }else{
-                    fetch('https://daitianfang.1459.top/acg',{
+            fetch('https://daitianfang.1459.top/acg',{
             method:'POST',
             mode:'cors',
             headers: {'Content-Type':'application/json'},
@@ -56,7 +57,7 @@ export default class Signin extends Component {
                 this.setState({
                     msg:'用户名或密码错误'
                 },()=>{
-                    ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
                 })   
             }
         });
@@ -64,6 +65,6 @@ export default class Signin extends Component {
 
     }
     hidden = (e)=>{
-        ReactDom.findDOMNode(document.getElementById('alert')).style.display='none';
+        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
     }
 }

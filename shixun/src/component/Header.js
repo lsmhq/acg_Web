@@ -10,7 +10,9 @@ export default class Header extends Component {
             cookie_obj:this.cookieToObj(document.cookie),
             src:'',
             userdata:[],
-            value:''
+            value:'',
+            head:''
+
 
 
             
@@ -33,10 +35,18 @@ export default class Header extends Component {
         return (
             <Router>
                 <div className='header'>                                                
-                    <Link to='/leftmenu'>
-                    <img src='/img/logo.png'  className='logo' alt='头像' />
-                    </Link>
-                    <button className='button' onClick={(e)=>{this.fetch_select(e)}}>
+                   
+                    {this.state.data.map((item,key)=>(
+                        
+                        
+                        <Link to='/leftmenu' key={key}> <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } className='logo'  alt=''/>
+                         </Link>
+                             
+                            
+                    ))
+                    } 
+                   
+                    <button className='button'>
                         <Icon key="0" type="search" style={{ color:'#000'}} />
                     </button>  
                     <Link to='/searchmsg'>
@@ -63,8 +73,8 @@ export default class Header extends Component {
     componentDidMount(){
         fetch('https://daitianfang.1459.top/api/v1/person?id='+this.state.cookie_obj.userid)
         .then((res)=>res.json())
-        .then((res)=>{
-            this.setState({userdata:res.data});
+        .then((res)=>{          
+            this.setState({data:res.data});
         })
     }
     changeEvent(e){

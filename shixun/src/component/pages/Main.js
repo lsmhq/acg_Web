@@ -5,7 +5,8 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                 <WingBlank style={{margin:'0' ,marginTop:'120px',zIndex:'0'
+                 <WingBlank style={{margin:'0' ,marginTop:'120px',zIndex:'-1',
+                 touchAction:'none'
                 }}>
                  <Carousel style={{
                         background: '#fff',
@@ -39,6 +40,7 @@ export default class Main extends Component {
                         </Carousel>
 
                 </WingBlank>
+               
 
                 
                 <Body url='https://daitianfang.1459.top/api/v1/chapter?type=all'/>

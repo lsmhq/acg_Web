@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {Icon,NavBar} from "antd-mobile";
 import CommentApp from '../Comments/CommentApp';
-import ArticleText from  './ArticleText'
+import ArticleText from  './ArticleText';
+import Alert from '../component/Alert';
+import ReactDom from 'react-dom';
 
 export default class Articlemsg extends Component {
     constructor(){
@@ -9,8 +11,16 @@ export default class Articlemsg extends Component {
         this.state = {
             data: [],
             cookie_obj:this.cookieToObj(document.cookie),
+            msg:'',
+            btn:'',
+            src:'',
+            fun:()=>{
+
+            }
+            
         }
-    }
+        }
+    
     cookieToObj=(cookie)=>{
         let obj = {};
         if(cookie){
@@ -29,9 +39,10 @@ export default class Articlemsg extends Component {
         
         
         return (
-            <div>
+            <div style={{backgroundImage:'url("/img/background3.png")'}}>
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
@@ -39,21 +50,27 @@ export default class Articlemsg extends Component {
                     <div onClick={(e)=>{this.fetch_addfouce(e)}} >
                         
                         <img  src='/img/关注.png' style={{width:'30%',heightL:'30%',float:"right"}}  alt=''/>
-                                    
+                                        
                     </div>                        
                     }
                     
-                    >文章</NavBar>
+                >文章</NavBar>
+                    <Alert
+                        msg={this.state.msg}
+                        src={this.state.src}
+                        toPath={this.state.fun}
+                        btn={this.state.btn}
+                    />
 
 
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={"https://daitianfang.1459.top"+item.images} alt='' style={{width:'100%',height:'180px',}} />
+                            <img src={"https://daitianfang.1459.top"+item.images} alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
                             <div style={{margin:'20px 30px'}}>
-                            <h2 style={{textAlign:'center'}}>{item.title}</h2>   
-                            <h3 id='auther  ' style={{textAlign:'center'}}>小编：<span id='auther'>{item.auther}</span></h3>
-                            <h4  style={{textAlign:'center'}}>作者ID：<span id='autherid'>{item.id}</span></h4>
+                            <h3 style={{textAlign:'center'}}>{item.title}</h3>   
+                            <h4 id='auther  ' style={{textAlign:'center'}}>小编：<span id='auther'>{item.auther}</span></h4>
+                            <h4  style={{textAlign:'center'}}>作者ID：<span id='autherid'>{item.autherid}</span></h4>
                            
                         </div>
                                                                       
@@ -65,7 +82,9 @@ export default class Articlemsg extends Component {
                     ))       
                 }
                 <br/> 
-                <CommentApp/>     
+                <CommentApp/>
+                <div style={{height:'50px'}}>
+                </div>     
             </div>
         )
     }
@@ -97,11 +116,29 @@ export default class Articlemsg extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    alert('关注成功')
+                    this.setState({
+                        msg:'关注成功',
+                        btn:'确认',
+                        src:'/images/success.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
                     break;
                 }
                 case 'error':{
-                    alert('关注失败')
+                    this.setState({
+                        msg:'关注失败',
+                        btn:'确认',
+                        src:'/images/failed.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
                     break;
                 }
             }

@@ -8,11 +8,23 @@ export default class CommentInput extends Component {
     constructor(){
         super()
         this.state={
+            cookie_obj:this.cookieToObj(document.cookie),
             username:'',
             content:''
         }
     }
-
+    cookieToObj=(cookie)=>{
+        let obj = {};
+        if(cookie){
+            cookie.split(';').map(item=>{
+                item = item.trim();
+                let arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            });
+        }
+        return obj;
+        
+      }
     componentDidMount(){
         this.textarea.focus()
     }
@@ -23,7 +35,7 @@ export default class CommentInput extends Component {
     handleSubmit () {
         if (this.props.onSubmit) {
           this.props.onSubmit({
-              username:this.state.username,
+              username:atob(this.state.cookie_obj.username),
               content:this.state.content,
               createdTime:+new Date()
           })
@@ -31,25 +43,9 @@ export default class CommentInput extends Component {
         this.setState({ content: '' })
     }
 
-    componentWillMount () {
-        this._loadUsername()
-      }
-    _loadUsername () {
-        const username = localStorage.getItem('username')
-        if (username) {
-          this.setState({ username })
-        }
-      }
-    _saveUsername (username) {
-        localStorage.setItem('username', username)
-    }
     
     
-    handleUsernameChange (event) {
-        this.setState({
-          username: event.target.value
-        })
-    }
+    
     handleContentChange (event) {
         this.setState({
           content: event.target.value
@@ -60,15 +56,6 @@ export default class CommentInput extends Component {
     render() {
         return (
             <div className='comment-input'>
-                <div className='comment-field'>
-                    <span className='comment-field-name'>用户名：</span>
-                    <div className='comment-field-input'>
-                        <input value={this.state.username} 
-                        onBlur = {this.handleUsernameBlur.bind(this)}
-                        onChange={this.handleUsernameChange.bind(this)}
-                        />
-                    </div>
-                </div>
                 <div className='comment-field'>
                     <span className='comment-field-name'>评论内容：</span>
                     <div className='comment-field-input'>

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { NavBar, Icon} from 'antd-mobile';
 import Box from '../component/Box';
 import {Link,HashRouter as Router,} from 'react-router-dom';
+import Alert from '../component/Alert';
+import ReactDom from 'react-dom';
 
 export default class Person extends Component {
     constructor(){
@@ -11,7 +13,13 @@ export default class Person extends Component {
             data: [],
             cookie_obj:this.cookieToObj(document.cookie),
             fans:0,
-            fouce:0
+            fouce:0,
+            msg:'',
+            btn:'',
+            src:'',
+            fun:()=>{
+
+            }
             
         }
     }
@@ -35,6 +43,7 @@ export default class Person extends Component {
             return(
                 <div className='person0'>
                     {/* 顶栏 */}
+                  
                     <NavBar
                         style={{backgroundColor:'rgb(255,64,129)'}}
                         mode="white"
@@ -91,6 +100,9 @@ export default class Person extends Component {
                                 <Box src='/img/个人中心.png' title='个人' />
                             </Link>                                               
                     </div>
+                    <div style={{width:'100%',height:'400px'}}>
+
+                    </div>
 
                 </div> 
         )
@@ -99,8 +111,9 @@ export default class Person extends Component {
             return (
                 <div className='person0'>                               
                      {/* 顶栏 */}
+    
                      <NavBar
-                        style={{backgroundColor:'rgb(255,64,129)'}}
+                        style={{backgroundColor:'rgb(255,64,129)',zIndex:'1000',position:'fixed',width:'100%'}}
                         mode="white"
                         icon={<Icon type="left" />}
                         onLeftClick={() => window.history.back(-1)}               
@@ -113,7 +126,8 @@ export default class Person extends Component {
                     {/* 个人资料 */}
                         <div className="container">                                                   
                             <div className="content">
-                                <img className="avatar" src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } alt='' />
+                                <input type='file' id='img_upload' name='img_upload' style={{display:'none'}} onChange={this.upLoad}/>
+                                <img className="avatar" src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
                                 <div className="info">
                                 <p style={{color:'rgb(255,64,129)',fontWeight:'bold'}}>{item.name}</p>
                                 <p style={{color:'rgb(255,64,129)'}}>{item.signatrue}</p>
@@ -122,7 +136,7 @@ export default class Person extends Component {
                         </div>
                         {/* 粉丝关注等级 */}
                         <div style={{
-                            width:'100%',height:'50px'
+                            width:'100%',height:'50px',borderBottom:'2px solid #ccc',paddingBottom:'10px',margin:'auto'
                         }}>
                             <div className='person2'>
                             <Link to={'/funs/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
@@ -136,34 +150,41 @@ export default class Person extends Component {
                             
                         </div>
                        
-    
+                        <Alert
+                        msg={this.state.msg}
+                        src={this.state.src}
+                        toPath={this.state.fun}
+                        btn={this.state.btn}
+                    />
                         {/* 个人简介 */}
                         <form method='POST' style={{
-                            width:'90%',
+                            width:'100%',
                             textAlign:'center',
-                            margin:'0 5% 0 5%',
                             backgroundColor:''
                             
                         }}>
-                            <p style={{marginTop:'10px'}}>
-                                性别： <input type='text'  defaultValue={item.sex} style={{position:'relative'}} id='sex' name='sex'/>
-                            </p><hr/>
-                            <p style={{marginTop:'4px'}}>
-                                爱好： <input type='text' defaultValue={item.hobby} style={{position:'relative'}} id='hobby' name='hobby'/>
-                            </p><hr/>
-                            <p style={{marginTop:'4px'}}>
-                                家乡： <input type='text' defaultValue={item.hometown} style={{position:'relative'}} id='hometown' name='hometown'/>
-                            </p><hr/>
-                            <p style={{marginTop:'4px'}}>
-                                生日： <input type='text' defaultValue={item.birthday} style={{position:'relative'}} id='birthday' name='birthday'/>
-                            </p><hr/>
-                            <p style={{marginTop:'4px'}}>
-                                签名： <input type='text' defaultValue={item.signatrue} style={{position:'relative'}} id='signatrue' name='signatruey'/>
-                            </p>
+                            <p style={{marginTop:'20px',marginLeft:'-40px'}}>
+                                昵称： <input type='text'  defaultValue={item.name} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='name' name='name'/>
+                            </p><br/>
+                            <p style={{marginTop:'4px',marginLeft:'-40px'}}>
+                                性别： <input type='text'  defaultValue={item.sex} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='sex' name='sex'/>
+                            </p><br/>
+                            <p style={{marginTop:'4px',marginLeft:'-40px'}}>
+                                爱好： <input type='text' defaultValue={item.hobby} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='hobby' name='hobby'/>
+                            </p><br/>
+                            <p style={{marginTop:'4px',marginLeft:'-40px'}}>
+                                家乡： <input type='text' defaultValue={item.hometown} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='hometown' name='hometown'/>
+                            </p><br/>
+                            <p style={{marginTop:'4px',marginLeft:'-40px'}}>
+                                生日： <input type='text' defaultValue={item.birthday} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='birthday' name='birthday'/>
+                            </p><br/>
+                            <p style={{marginTop:'4px',marginLeft:'-40px'}}>
+                                签名： <input type='text' defaultValue={item.signatrue} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='signatrue' name='signatruey'/>
+                            </p><br/>
                             
                                
                             <input type='button' value='提交' id='update' name='' onClick={(e)=>{this.fetch_person(e)}}
-                                style={{backgroundColor:'#FFC1C1',border:'none',width:'50px',height:'25px',marginBottom:'70px'}}
+                                style={{backgroundColor:'rgb(255,64,129)',border:'none',width:'50px',height:'25px',marginBottom:'70px',color:'white',borderRadius:'3px'}}
                             />
                         </form>
 
@@ -201,14 +222,42 @@ export default class Person extends Component {
         }
        
     }   
+    upLoad =()=>{
+        let reader = new FileReader();
+        let file = document.getElementById('img_upload').files[0];
+        reader.readAsDataURL(file);
+        reader.onload = ()=>{
+            document.getElementsByClassName('avatar')[0].src = reader.result;
+            let data = {};
+            data.type = 'update_img';
+            data.images = reader.result;
+            fetch('https://daitianfang.1459.top/api/v1/person',{
+                method:'POST',
+                mode:'cors',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(data)
+            }).then(req=>{
+                req.text()
+            }).then(data=>{
+                if(data === 'success'){
+                    
+                }else{
+                    
+                }
+            })
+        }
+
+    }
     fetch_person(){
         let data = {};
         data.type='update_font';
+        let name = ReactDOM.findDOMNode(document.getElementById('name')).value;
         let sex = ReactDOM.findDOMNode(document.getElementById('sex')).value;
         let hobby = ReactDOM.findDOMNode(document.getElementById('hobby')).value;
         let hometown = ReactDOM.findDOMNode(document.getElementById('hometown')).value;
         let birthday = ReactDOM.findDOMNode(document.getElementById('birthday')).value;
         let signatrue = ReactDOM.findDOMNode(document.getElementById('signatrue')).value;
+        data.name = name;
         data.sex = sex;
         data.hobby = hobby;
         data.hometown = hometown;
@@ -225,11 +274,30 @@ export default class Person extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    alert('更改成功')
+                    this.setState({
+                        msg:'更改成功',
+                        btn:'确认',
+                        src:'/images/success.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
+                    this.componentDidMount();
                     break;
                 }
                 case 'error':{
-                    alert('更改失败')
+                    this.setState({
+                        msg:'更改失败',
+                        btn:'确认',
+                        src:'/images/failed.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
                     break;
                 }
             }
@@ -252,5 +320,8 @@ export default class Person extends Component {
             })
         })
         
+    }
+    upFile = ()=>{
+        document.getElementById('img_upload').click();
     }
 }

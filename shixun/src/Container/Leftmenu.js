@@ -45,13 +45,13 @@ export default class Leftmenu extends Component {
                      <Link to='/appgood'>商城</Link>
                      </ul>
                      <ul className='menu2'>
-                     <Link to='/concern'>关注</Link>
+                     <Link to='/person'>关注</Link>
                      </ul>
                      <ul className='menu2'>
-                     <Link to='/funs'>粉丝</Link>
+                     <Link to='/person'>粉丝</Link>
                      </ul>
                      <ul className='menu2'>
-                     <Link to='/leftmenu'>关于我们</Link>
+                     <Link to='/aboutus'>关于我们</Link>
                      </ul>
                     
                  </div>
@@ -71,7 +71,7 @@ export default class Leftmenu extends Component {
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
                            <div className='menu1'>
-                                <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid+".jpg" } style={{width:'70px',height:'70px',borderRadius:'50%'}} alt=''/>
+                                <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } style={{width:'70px',height:'70px',borderRadius:'50%'}} alt=''/>
                                 <p style={{color:'black',fontSize:'17px'}}>昵称：{item.name}</p>
                                 <p style={{color:'black',fontSize:'16px'}}>个性签名：{item.signatrue}</p>
                              </div>

@@ -12,7 +12,8 @@ export default class Searchmsg extends Component {
         return (
             <div className='searchbg'>
                 <NavBar
-                    style={{backgroundColor:'rgb(255,64,129)'}}
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
                     mode="white"
                     icon={<Icon type="left" />}
                     onLeftClick={() => window.history.back(-1)}
@@ -20,7 +21,8 @@ export default class Searchmsg extends Component {
                         <Icon key="0" type="search" style={{ color:'#000'}} />                                           
                     }
                     >搜一搜</NavBar>
-                     <input type='search' id='search' style={{
+                    <div style={{marginTop:'45px'}}> 
+                    <input type='search' id='search' style={{
                     width:'70%',height:'30px',textAlign:'center',margin:'15px 0 0 15%',borderRadius:'10px',border:'none'
                     }} placeholder='搜索文章'  onChange={(e)=>this.changeEvent(e)}></input>
                     <button style={{float:'right',width:'30px',height:'30px',
@@ -29,6 +31,8 @@ export default class Searchmsg extends Component {
                     }} onClick={(e)=>{this.fetch_select(e)}}>
                         <Icon key="0" type="search" style={{ color:'white'}} />
                 </button> 
+                    </div>
+                     
 
                 <ol className='hot' style={{fontSize:'16px',color:'red',float:'left', marginLeft:'30px',height:'100%',}}>
                     <li>蒜头王八</li>
@@ -48,7 +52,7 @@ export default class Searchmsg extends Component {
                         }} key={key}>                           
                                 <Link to={'/articlemsg/'+item.id} style={{fontSize:'12px',}}>
                                     <li style={{height:'90px' ,width:'100%',}}>
-                                        <img src={"https:\\daitianfang.1459.top"+item.images+"0.jpg"} style={{width:'120px',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
+                                        <img src={"https:\\daitianfang.1459.top"+item.images} style={{width:'120px',height:'80px', float:'left',margin:'0px 10px 10px 10px'}} alt=''/>
                                         <h3 style={{}}>
                                         {item.auther}                               
                                         </h3> 

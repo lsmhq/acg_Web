@@ -1,22 +1,26 @@
-.nav{
+body,html{
+    border: none;
+    margin: 0 auto;
+}
+.login_nav{
     width:100%;
     background-color: rgb(255, 0, 157);
     text-align: center;
     height: 50px;
     line-height: 50px;
     font-size: 30px;
-    font-weight: 1000;
+    font-weight: 900;
     color: white;
 }
-.bg_login{
+.login_bg{
     width: 100%;
 }
-.logo{
+.login_logo{
     width: 100%;
     text-align: center;
     margin-top: 20px;
 }
-.input{
+.login_input{
     width: 80%;
     height: 50px;
     border: none;
@@ -46,7 +50,7 @@
     transition: all linear 0.2s;
     background-color: rgb(0, 84, 153);
 }
-#alert{
+#login_alert{
     width: 81%;
     position: absolute;
     left: 10%;
@@ -56,17 +60,17 @@
     border-radius: 5px;
     display: none;
 }
-#alert>img{
+#login_alert>img{
     margin-left: 35%;
 }
-#alert>span{
+#login_alert>span{
     display: block;
     margin-top: 20px;
     font-size: large;
     width: 100%;
     text-align: center;
 }
-#check{
+#login_check{
     display: none;
     position: absolute;
     width: 100%;
@@ -75,7 +79,7 @@
     font-size: 15px;
 }
 
-#pass{
+.login_pass{
     position: absolute;
     display: block;
     font-size: 18px;
@@ -89,26 +93,10 @@
     height: 50px;
     text-align: center;
     line-height: 50px;
+    transition: all linear 0.3s;
 }
-.waves{
-    position:relative;
-    cursor:pointer;
-    display:inline-block;
-    overflow:hidden;
-    text-align: center;
-    -webkit-tap-highlight-color:transparent;
-    z-index:1;
-}
-.waves .waves-animation{
-    position:absolute;
-    border-radius:50%;
-    width:25px;
-    height:25px;
-    opacity:0;
-    background:rgba(255,255,255,0.3);
-    transition:all 0.7s ease-out;
-    transition-property:transform, opacity, -webkit-transform;
-    -webkit-transform:scale(0);
-    transform:scale(0);
-    pointer-events:none
+
+.login_pass:hover{
+    transition: all linear 0.3s;
+    background-color: rgb(0, 138, 18);
 }

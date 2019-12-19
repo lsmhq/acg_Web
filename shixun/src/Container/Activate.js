@@ -8,18 +8,16 @@ export default class Activate extends Component {
         this.state = {
             msg:'',
             btn:'',
-            fun:()=>{
-
-            },
+            fun:()=>{},
             src:''
         }
     }
     render() {
         return (
-            <div className='bg'>
+            <div className='login_bg'>
                 <Nav title='邮箱激活'/>
                 <Alert msg={this.state.msg} btn = {this.state.btn} toPath={()=>{this.state.fun()}} src={this.state.src}/>
-                <button className='input_btn' onClick={()=>{this.fetch_send()}}>点击发送邮件</button>
+                <button className='input_btn animated zoomIn' onClick={()=>{this.fetch_send()}}>点击发送邮件</button>
             </div>
         )
     }
@@ -29,14 +27,14 @@ export default class Activate extends Component {
         data.username = sessionStorage.getItem('username');
         data.email = sessionStorage.getItem('email');
         // console.log(data);
-        ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';            
+        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
         this.setState({
-            msg:'正在发送中·····',
+            msg:'正在发送中 · · ·',
             btn:'请稍后',
             fun:()=>{
-                ReactDom.findDOMNode(document.getElementById('alert')).style.display='none';
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
             },
-            src:'/run.gif'
+            src:'/images/run.gif'
         })
         fetch('https://daitianfang.1459.top/acg',{
             method:'POST',
@@ -49,11 +47,11 @@ export default class Activate extends Component {
                     msg:'邮件已发送请注意查收',
                     btn:'点击返回登录',
                     fun:()=>{
-                        this.props.history.push('/');
+                        this.props.history.push('/login');
                     },
                     src:'/images/success.png'
                 },()=>{
-                    ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
                 })
             }else if(data === '发送失败,请检查邮箱'){
                 this.setState({
@@ -64,7 +62,7 @@ export default class Activate extends Component {
                     },
                     src:'/images/failed.png'
                 },()=>{
-                    ReactDom.findDOMNode(document.getElementById('alert')).style.display='block';
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
                 })
             }
         })
