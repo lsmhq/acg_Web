@@ -10,6 +10,9 @@ export default class Game extends Component {
                  <div>
                 <Header/>
                 </div>
+                <div style={{height:'120px'}}>
+
+                </div>
                 <Body url='https://daitianfang.1459.top/api/v1/chapter?type=game'/>
                 <div id='footer'>
                         <Link to='/apphome'>

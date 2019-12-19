@@ -11,6 +11,9 @@ export default class Comic extends Component {
                 <div>
                 <Header/>
                 </div>
+                <div style={{height:'120px'}}>
+
+                </div>
                 <Body url='https://daitianfang.1459.top/api/v1/chapter?type=comic'/>
                 <div id='footer'>
                         <Link to='/apphome'>

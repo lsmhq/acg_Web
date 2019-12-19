@@ -47,7 +47,7 @@ export default class Activate extends Component {
                     msg:'邮件已发送请注意查收',
                     btn:'点击返回登录',
                     fun:()=>{
-                        this.props.history.push('/login');
+                        this.props.history.push('/');
                     },
                     src:'/images/success.png'
                 },()=>{

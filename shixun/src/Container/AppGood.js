@@ -53,7 +53,7 @@ export default class AppGood extends Component {
                 }} onClick={(e)=>{this.fetch_select(e)}}>
                         <Icon key="0" type="search" style={{ color:'white'}} />
                 </button> 
-                <div style={{marginBottom:'-8000px'}}>
+                <div style={{marginBottom:'-8500px'}}>
                     {this.state.data.map((item,key)=>(
                             <ul style={{padding:'0',margin:'0 auto'}} key={key}>                           
                                     <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>

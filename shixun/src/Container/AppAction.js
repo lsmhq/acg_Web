@@ -92,7 +92,6 @@ export default class AppAction extends Component {
                         <option value="comic">comic</option>
                         <option value="game">game</option>
                         <option value="animation">animation</option>
-                        <option value="activate">activate</option>
                     </select>
                     {/* <Checkbox style={{marginRight:'15px',marginLeft:'20px' }} >comic</Checkbox>
                     <Checkbox style={{marginRight:'15px'}}>game</Checkbox>
@@ -123,6 +122,10 @@ export default class AppAction extends Component {
                           
                 </div>
                 </div>
+                <div style={{height:'500px',overflow:'hidden'}}>
+
+                </div>
+
                 </div>
             </Router>                                                 
         )
