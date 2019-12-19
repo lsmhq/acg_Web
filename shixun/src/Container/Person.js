@@ -18,9 +18,7 @@ export default class Person extends Component {
             btn:'',
             src:'',
             fun:()=>{
-
             }
-            
         }
     }
     cookieToObj=(cookie)=>{
@@ -33,17 +31,12 @@ export default class Person extends Component {
             });
         }
         return obj;
-        
       }
-    
-      
-    
     render() {
-        if(this.state.data.length===0){
+        if(this.state.cookie_obj.loginStatus !== 'b326b5062b2f0e69046810717534cb09'){
             return(
                 <div className='person0'>
                     {/* 顶栏 */}
-                  
                     <NavBar
                         style={{backgroundColor:'rgb(255,64,129)'}}
                         mode="white"
@@ -101,9 +94,7 @@ export default class Person extends Component {
                             </Link>                                               
                     </div>
                     <div style={{width:'100%',height:'400px'}}>
-
                     </div>
-
                 </div> 
         )
         }
@@ -111,15 +102,12 @@ export default class Person extends Component {
             return (
                 <div className='person0'>                               
                      {/* 顶栏 */}
-    
                      <NavBar
                         style={{backgroundColor:'rgb(255,64,129)',zIndex:'1000',position:'fixed',width:'100%'}}
                         mode="white"
                         icon={<Icon type="left" />}
                         onLeftClick={() => window.history.back(-1)}               
                         >个人中心</NavBar>
-                    
-                    
                     {this.state.data.map((item,key)=>(
                     <div key={key}>
                     <div>                            
@@ -147,9 +135,7 @@ export default class Person extends Component {
                             <div className='person2'>
                                 等级 <br/>  {item.level }
                             </div>
-                            
                         </div>
-                       
                         <Alert
                         msg={this.state.msg}
                         src={this.state.src}
@@ -161,7 +147,6 @@ export default class Person extends Component {
                             width:'100%',
                             textAlign:'center',
                             backgroundColor:''
-                            
                         }}>
                             <p style={{marginTop:'20px',marginLeft:'-40px'}}>
                                 昵称： <input type='text'  defaultValue={item.name} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='name' name='name'/>
@@ -181,25 +166,11 @@ export default class Person extends Component {
                             <p style={{marginTop:'4px',marginLeft:'-40px'}}>
                                 签名： <input type='text' defaultValue={item.signatrue} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='signatrue' name='signatruey'/>
                             </p><br/>
-                            
-                               
                             <input type='button' value='提交' id='update' name='' onClick={(e)=>{this.fetch_person(e)}}
                                 style={{backgroundColor:'rgb(255,64,129)',border:'none',width:'50px',height:'25px',marginBottom:'70px',color:'white',borderRadius:'3px'}}
                             />
                         </form>
-
-                        
-                        {/* <div className='person3'>
-                        <p style={{marginTop:'20px'}}>性别：{item.sex}</p><hr/>
-                        <p style={{marginTop:'20px'}}>爱好：{item.hobby}</p><hr/>
-                        <p style={{marginTop:'20px'}}>家乡：{item.hometown}</p><hr/>
-                        <p style={{marginTop:'20px'}}>生日： {item.birthday} </p><hr/>
-                        </div>
-                        <div style={{margin:'auto',width:'60%'}}>
-                        <textarea className='person4' placeholder='我的【个性】' />
-                        </div> */}
                 </div>
-                
                     </div>
                        ))
                     }
@@ -220,7 +191,6 @@ export default class Person extends Component {
                 </div>
             )
         }
-       
     }   
     upLoad =()=>{
         let reader = new FileReader();
@@ -240,9 +210,9 @@ export default class Person extends Component {
                 req.text()
             }).then(data=>{
                 if(data === 'success'){
-                    
+                    alert('上传成功');
                 }else{
-                    
+                    alert('上传失败');
                 }
             })
         }
