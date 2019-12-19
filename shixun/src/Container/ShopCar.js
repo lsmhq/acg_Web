@@ -74,7 +74,7 @@ export default class ShopCar extends Component {
                                 <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                     <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
-                                        <img src={"https:\\daitianfang.1459.top"+item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
+                                        <img src={item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         
                                         <h4 style={{margin:'20px 0 0 10%'}}>
                                             商品名称：{item.name}
@@ -90,20 +90,24 @@ export default class ShopCar extends Component {
                                         
                                     </li>                                  
                                 </Link>                                                                                                               
-                        </ul>    
+                        </ul> 
+                          
                     ))
+                    
                 }
+               
             </div>
+            <div style={{height:'50px',width:'100%',marginTop:'40px',float:'left'}}></div>
             <div style={{
                 width: '100%',
                 height: '50px',
                 position:'fixed',
                 right:'0px',
                 bottom:'0px',
-            
+                zIndex:"10000",
                 backgroundColor:'white'
             }}>
-            <p style={style} id='count'>总价：{this.state.count}</p>
+            <p style={style} id='count'>总价：{this.state.count}元</p>
                         <button 
                              onClick={(e)=>{this.fetch_bug(e)}}
                             style={{width:'30%',backgroundColor:'blue',float:'right',

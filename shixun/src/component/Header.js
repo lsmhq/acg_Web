@@ -36,15 +36,15 @@ export default class Header extends Component {
                 <Router>
                 <div className='header'>                                                
                    
-                    {this.state.data.map((item,key)=>(
+                    
                         
                         
-                        <Link to='/leftmenu' key={key}> <img src='/img/Logo.png' className='logo'  alt=''/>
+                        <Link to='/leftmenu' > <img src='/img/Logo.png' className='logo'  alt=''/>
                          </Link>
                              
                             
-                    ))
-                    } 
+                    
+                    
                    
                     <button className='button'>
                         <Icon key="0" type="search" style={{ color:'#000'}} />

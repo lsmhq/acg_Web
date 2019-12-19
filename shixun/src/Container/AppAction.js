@@ -122,7 +122,7 @@ export default class AppAction extends Component {
                           
                 </div>
                 </div>
-                <div style={{height:'500px',overflow:'hidden'}}>
+                <div style={{height:'100px',overflow:'hidden'}}>
 
                 </div>
 
