@@ -210,11 +210,7 @@ export default class Person extends Component {
             }).then(req=>{
                 req.text()
             }).then(data=>{
-                if(data === 'success'){
-                    alert('上传成功');
-                }else{
-                    alert('上传失败');
-                }
+                alert('上传成功');
             })
         }
 

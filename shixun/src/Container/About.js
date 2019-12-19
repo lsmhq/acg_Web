@@ -3,7 +3,7 @@ import { NavBar, List, Switch,Icon} from 'antd-mobile';
 export default class About extends Component {
     render() {
         return (
-            <div>
+            <div style={{textAlign:'center',lineHeight:'50px'}}>
                 <NavBar
                     style={{backgroundColor:'rgb(255,64,129)',
                     position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}

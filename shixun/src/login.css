@@ -1,6 +1,7 @@
 body,html{
     border: none;
     margin: 0 auto;
+    -webkit-user-select: none;
 }
 .login_nav{
     width:100%;
