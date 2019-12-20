@@ -30,7 +30,7 @@ export default class App extends Component {
                 <Route path='/appgood' component={AppGood}/>
                 <Route path='/person' component={Person}/>
                 <Route path='/appaction' component={AppAction}/>
-                <Route path='/funs/:id' component={Funs}/>
+                <Route path='/fans/:id' component={Funs}/>
                 <Route path='/concern/:id' component={Concern}/>
                 <Route path='/game'   component={Game}/>
                 <Route path='/animat'  component={Animat}/>

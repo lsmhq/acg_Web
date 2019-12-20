@@ -127,7 +127,7 @@ export default class Person extends Component {
                             width:'100%',height:'50px',borderBottom:'2px solid #ccc',paddingBottom:'10px',margin:'auto'
                         }}>
                             <div className='person2'>
-                            <Link to={'/funs/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
+                            <Link to={'/fans/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
                             </div>
                             <div className='person2'>
                             <Link to={'/concern/'+item.id} style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>关注 <br/>  {this.state.fouce}  </Link>
