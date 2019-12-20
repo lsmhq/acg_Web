@@ -66,7 +66,7 @@ export default class Articlemsg extends Component {
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={"https://daitianfang.1459.top"+item.images} alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
+                            <img src={item.images} alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
                             <div style={{margin:'20px 30px'}}>
                             <h3 style={{textAlign:'center'}}>{item.title}</h3>   
                             <h4 id='auther  ' style={{textAlign:'center'}}>小编：<span id='auther'>{item.auther}</span></h4>
@@ -75,7 +75,7 @@ export default class Articlemsg extends Component {
                         </div>
                                                                       
                         <div>
-                            <ArticleText url={"https://daitianfang.1459.top"+item.context+'.json'}/>   
+                            <ArticleText url={item.context+'.json'}/>   
                             <hr/>
                         </div>
                         </div>                      
@@ -104,8 +104,6 @@ export default class Articlemsg extends Component {
         data.type='insert';  
         data.id=this.state.cookie_obj.userid;
         data.fouceid=document.getElementById('autherid').innerText
-        console.log(data.id)
-        console.log(data.fouceid)
         fetch('https://daitianfang.1459.top/api/v1/fouce',{
             method:'POST',
             mode:'cors',

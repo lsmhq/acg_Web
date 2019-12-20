@@ -115,7 +115,7 @@ export default class Person extends Component {
                         <div className="container">                                                   
                             <div className="content">
                                 <input type='file' id='img_upload' name='img_upload' style={{display:'none'}} onChange={this.upLoad}/>
-                                <img className="avatar" src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
+                                <img className="avatar" src={"/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
                                 <div className="info">
                                 <p style={{color:'rgb(255,64,129)',fontWeight:'bold'}}>{item.name}</p>
                                 <p style={{color:'rgb(255,64,129)'}}>{item.signatrue}</p>
@@ -202,18 +202,48 @@ export default class Person extends Component {
             data.type = 'update_img';
             data.id=this.state.cookie_obj.userid
             data.images = reader.result;
-            fetch('https://daitianfang.1459.top/api/v1/person',{
-                method:'POST',
-                mode:'cors',
-                headers:{'Content-Type':'application/json'},
-                body:JSON.stringify(data)
-            }).then(req=>{
-                req.text()
-            }).then(data=>{
-                alert('上传成功');
-            })
-        }
+            this.setState({
+                msg:'正在上传 · · ·',
+                btn:'确认',
+                src:'/images/run.gif',
+                fun:()=>{
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                }
+            },()=>{
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                fetch('https://daitianfang.1459.top/api/v1/person',{
+                    method:'POST',
+                    mode:'cors',
+                    headers:{'Content-Type':'application/json'},
+                    body:JSON.stringify(data)
+                }).then(req=>{
+                    req.text();
+                }).then(data=>{
+                    if(data === 'success'){
+                        this.setState({
+                            msg:'上传成功 · · ·',
+                            btn:'确认',
+                            src:'/images/success.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }},()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        }); 
+                    }else{
+                        this.setState({
+                            msg:'上传成功 · · ·',
+                            btn:'确认',
+                            src:'/images/success.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }},()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        })
+                    }
 
+                })
+            })   
+        }
     }
     fetch_person(){
         let data = {};

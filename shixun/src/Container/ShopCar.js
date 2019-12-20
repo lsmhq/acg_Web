@@ -26,14 +26,21 @@ export default class ShopCar extends Component {
         .then((res)=>{
             this.setState({data:res.data});
         })
-        let num = 0;
-        let arr = JSON.parse(localStorage.getItem('ShopCar'));
-        arr.map(item=>{
-            num += item.price;
-        })
-        this.setState({
-            count:num
-        })
+        if(localStorage.getItem('ShopCar')){
+            let num = 0;
+            let arr = JSON.parse(localStorage.getItem('ShopCar'));
+            arr.map(item=>{
+                num += item.price;
+            })
+            this.setState({
+                count:num
+            }) 
+        }else{
+            this.setState({
+                count:0
+            })
+        }
+
     }
     render() {
         let style = {

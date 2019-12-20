@@ -71,7 +71,7 @@ export default class Leftmenu extends Component {
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
                            <div className='menu1'>
-                                <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } style={{width:'70px',height:'70px',borderRadius:'50%'}} alt=''/>
+                                <img src={"/images/avatar/"+item.avatarid } style={{width:'70px',height:'70px',borderRadius:'50%'}} alt=''/>
                                 <p style={{color:'black',fontSize:'17px'}}>昵称：{item.name}</p>
                                 <p style={{color:'black',fontSize:'16px'}}>个性签名：{item.signatrue}</p>
                              </div>

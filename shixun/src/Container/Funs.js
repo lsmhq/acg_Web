@@ -30,7 +30,7 @@ export default class Funs extends Component {
                         }} key={key}>                           
                                 
                                     <li style={{height:'90px' ,width:'100%'}}>
-                                        <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } 
+                                        <img src={"/images/avatar/"+item.avatarid } 
                                         style={{width:'60px',height:'60px', float:'left',borderRadius:'50%',
                                         margin:'15px 0px 10px 40px'}} alt=''/>
                                         <p style={{float:'right',fontSize:'14px',fontWeight:'bold',
