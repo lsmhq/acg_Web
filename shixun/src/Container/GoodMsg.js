@@ -79,7 +79,7 @@ export default class GoodMsg extends Component {
                             right:'0px',
                             bottom:'0px',
                             color:'white',
-                            backgroundColor:'white'
+                            backgroundColor:'white',
                         }}>
 
                         
