@@ -50,7 +50,6 @@ export default class Address extends Component {
         )
     }
     submit(){
-        console.log(0)
         this.setState({
           postList:[...this.state.postList,this.state.inputValue],
          inputValue:""

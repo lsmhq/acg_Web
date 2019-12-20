@@ -52,7 +52,7 @@ export default class GoodMsg extends Component {
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={"https:\\daitianfang.1459.top"+item.path } alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
+                            <img src={item.path } alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
                             <Alert
                                 msg={this.state.msg}
                                 src={this.state.src}
@@ -120,8 +120,10 @@ export default class GoodMsg extends Component {
                 let arr_data = JSON.parse(localStorage.getItem('ShopCar'));
                 arr_data.push(this.state.data[0]);
                 localStorage.setItem('ShopCar',JSON.stringify(arr_data));
+                alert('添加成功');
             }else{
                 localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
+                alert('添加成功');
             }
     }
     componentDidMount(){

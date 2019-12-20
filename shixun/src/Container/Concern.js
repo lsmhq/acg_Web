@@ -63,7 +63,7 @@ export default class Concern extends Component {
                                   
                                       <li style={{height:'90px' ,width:'100%'}}>
                                       <button className='concern' onClick={(e)=>{this.fetch_concern(e)}} name={`col#${index}`}>取消关注</button>  
-                                          <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid} 
+                                          <img src={"/images/avatar/"+item.avatarid} 
                                           style={{width:'60px',height:'60px', float:'left',borderRadius:'50%',
                                           margin:'15px 0px 10px 40px'}} alt=''/>
                                           
@@ -121,9 +121,6 @@ export default class Concern extends Component {
     let fouceid=ReactDOM.findDOMNode(document.getElementById('fouceid#'+e.target.name.split('#')[1])).innerText;
     data.id=this.props.match.params.id
     data.fouceid=fouceid
-    console.log(data.id)
-    console.log(data.fouceid)
-    
     fetch('https://daitianfang.1459.top/api/v1/fouce',{
         method:'POST',
         mode:'cors',

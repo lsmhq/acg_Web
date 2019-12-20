@@ -79,7 +79,7 @@ export default class Header extends Component {
                     {this.state.data.map((item,key)=>(
                         
                         
-                        <Link to='/leftmenu' key={key}> <img src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid } className='logo'  alt=''/>
+                        <Link to='/leftmenu' key={key}> <img src={"/images/avatar/"+item.avatarid } className='logo'  alt=''/>
                          </Link>
                              
                             
@@ -126,7 +126,6 @@ export default class Header extends Component {
         };
         let search=this.state.value
         data.search=search
-        console.log(data.search)
         data.type = 'select';
         fetch('https://daitianfang.1459.top/api/v1/chapter?type=all',{
             method: 'POST',
@@ -138,8 +137,6 @@ export default class Header extends Component {
             this.setState({
                 data:data
             })
-            console.log(data)
-            console.log(data[0].id)
             this.props.history.push('/articlemsg/'+data[0].id);
         })
     }   

@@ -26,7 +26,6 @@ export default class Activate extends Component {
         data.type = 'check';
         data.username = sessionStorage.getItem('username');
         data.email = sessionStorage.getItem('email');
-        // console.log(data);
         ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
         this.setState({
             msg:'正在发送中 · · ·',

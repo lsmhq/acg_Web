@@ -112,10 +112,10 @@ export default class Person extends Component {
                     <div key={key}>
                     <div>                            
                     {/* 个人资料 */}
-                        <div className="container">                                                   
-                            <div className="content">
+                        <div className="container ">                                                   
+                            <div className="content  animated bounce">
                                 <input type='file' id='img_upload' name='img_upload' style={{display:'none'}} onChange={this.upLoad}/>
-                                <img className="avatar" src={"https:\\daitianfang.1459.top/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
+                                <img className="avatar" src={"/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
                                 <div className="info">
                                 <p style={{color:'rgb(255,64,129)',fontWeight:'bold'}}>{item.name}</p>
                                 <p style={{color:'rgb(255,64,129)'}}>{item.signatrue}</p>
@@ -125,7 +125,7 @@ export default class Person extends Component {
                         {/* 粉丝关注等级 */}
                         <div style={{
                             width:'100%',height:'50px',borderBottom:'2px solid #ccc',paddingBottom:'10px',margin:'auto'
-                        }}>
+                        }} className='animated bounceIn'>
                             <div className='person2'>
                             <Link to={'/fans/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
                             </div>
@@ -147,7 +147,7 @@ export default class Person extends Component {
                             width:'100%',
                             textAlign:'center',
                             backgroundColor:''
-                        }}>
+                        }} className='animated fadeInUp'>
                             <p style={{marginTop:'20px',marginLeft:'-40px'}}>
                                 昵称： <input type='text'  defaultValue={item.name} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='name' name='name'/>
                             </p><br/>
@@ -202,22 +202,48 @@ export default class Person extends Component {
             data.type = 'update_img';
             data.id=this.state.cookie_obj.userid
             data.images = reader.result;
-            fetch('https://daitianfang.1459.top/api/v1/person',{
-                method:'POST',
-                mode:'cors',
-                headers:{'Content-Type':'application/json'},
-                body:JSON.stringify(data)
-            }).then(req=>{
-                req.text()
-            }).then(data=>{
-                if(data === 'success'){
-                    alert('上传成功');
-                }else{
-                    alert('上传失败');
+            this.setState({
+                msg:'正在上传 · · ·',
+                btn:'确认',
+                src:'/images/run.gif',
+                fun:()=>{
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
                 }
-            })
-        }
+            },()=>{
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                fetch('https://daitianfang.1459.top/api/v1/person',{
+                    method:'POST',
+                    mode:'cors',
+                    headers:{'Content-Type':'application/json'},
+                    body:JSON.stringify(data)
+                }).then(req=>{
+                    req.text();
+                }).then(data=>{
+                    if(data === 'success'){
+                        this.setState({
+                            msg:'上传成功 · · ·',
+                            btn:'确认',
+                            src:'/images/success.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }},()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        }); 
+                    }else{
+                        this.setState({
+                            msg:'上传成功 · · ·',
+                            btn:'确认',
+                            src:'/images/success.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }},()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        })
+                    }
 
+                })
+            })   
+        }
     }
     fetch_person(){
         let data = {};

@@ -93,10 +93,6 @@ export default class AppAction extends Component {
                         <option value="game">game</option>
                         <option value="animation">animation</option>
                     </select>
-                    {/* <Checkbox style={{marginRight:'15px',marginLeft:'20px' }} >comic</Checkbox>
-                    <Checkbox style={{marginRight:'15px'}}>game</Checkbox>
-                    <Checkbox style={{marginRight:'15px'}}>animation</Checkbox>
-                    <Checkbox style={{marginRight:'0px'}}>activate</Checkbox> */}
                     </div>
                     <p style={{fontFamily:'SimHei',fontSize:'18px',fontWeight:'bold'}} >内容：</p>
                     <textarea placeholder='请输入文章内容' id='context' className='actiona2'/>
@@ -149,42 +145,53 @@ export default class AppAction extends Component {
         data.contexttype=contexttype
         data.title = title;
         data.context = context;
-        fetch('https://daitianfang.1459.top/api/v1/chapter',{
-            method:'POST',
-            mode:'cors',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify(data)
-        }).then(req=>{
-            return req.text();
-        }).then(data=>{
-            switch (data) {
-                case 'success':{
-                    this.setState({
-                        msg:'发布成功',
-                        btn:'确认',
-                        src:'/images/success.png',
-                        fun:()=>{
-                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                        }
-                    },()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                    })   
-                    break;
-                }
-                case 'error':{
-                    this.setState({
-                        msg:'发布失败',
-                        btn:'确认',
-                        src:'/images/failed.png',
-                        fun:()=>{
-                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                        }
-                    },()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                    })   
-                    break;
-                }
+        this.setState({
+            msg:'上传中 · · ·',
+            btn:'请稍后 · · ·',
+            src:'/images/run.gif',
+            fun:()=>{
+                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
             }
-        })
+        },()=>{
+            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+            fetch('https://daitianfang.1459.top/api/v1/chapter',{
+                method:'POST',
+                mode:'cors',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(data)
+            }).then(req=>{
+                return req.text();
+            }).then(data=>{
+                switch (data) {
+                    case 'success':{
+                        this.setState({
+                            msg:'发布成功',
+                            btn:'确认',
+                            src:'/images/success.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }
+                        },()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        })   
+                        break;
+                    }
+                    case 'error':{
+                        this.setState({
+                            msg:'发布失败',
+                            btn:'确认',
+                            src:'/images/failed.png',
+                            fun:()=>{
+                                ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                            }
+                        },()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                        })   
+                        break;
+                    }
+                }
+            })
+        })   
+ 
     }
 }
