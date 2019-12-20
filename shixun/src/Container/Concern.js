@@ -89,7 +89,7 @@ export default class Concern extends Component {
           
           <div id='footerfuns'>
               <div className='boxfuns'>
-                  <Link to={'/funs/'+this.props.match.params.id} >
+                  <Link to={'/fans/'+this.props.match.params.id} >
                       <img src='/img/funs.png' alt=''   className='footerimgfuns'/>
                       <span className='textfuns'>我的粉丝</span>
                   </Link>

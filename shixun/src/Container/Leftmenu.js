@@ -89,7 +89,7 @@ export default class Leftmenu extends Component {
                             <Link to={'/concern/'+item.id}>关注</Link>
                             </ul>
                             <ul className='menu2'>
-                            <Link to={'/funs/'+item.id}>粉丝</Link>
+                            <Link to={'/fans/'+item.id}>粉丝</Link>
                             </ul>
                             <ul className='menu2'>
                             <Link to='/aboutus'>关于我们</Link>

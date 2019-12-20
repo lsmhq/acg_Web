@@ -10,6 +10,23 @@ export default class Funs extends Component {
     }
     
     render() {
+        if(this.state.data==null){
+            return(
+                <div>
+                {/* 顶栏 */}
+                <NavBar
+                    style={{backgroundColor:'rgb(255,64,129)',
+                    position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'
+                }}
+                    mode="white"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => window.history.back(-1)}
+                    >我的粉丝</NavBar>
+                </div>
+                
+            )
+        }
+        else{
         return (
             <div>
                 {/* 顶栏 */}
@@ -60,7 +77,7 @@ export default class Funs extends Component {
                 {/* 跳转框 */}
                 <div id='footerfuns'>
             <div className='boxfuns'>
-                <Link to={'/funs/'+this.props.match.params.id} >
+                <Link to={'/fans/'+this.props.match.params.id} >
                     <img src='/img/funs.png' alt=''   className='footerimgfuns'/>
                     <span className='textfuns'>我的粉丝</span>
                 </Link>
@@ -76,7 +93,7 @@ export default class Funs extends Component {
                     
         </div>
             
-        )
+        )}
     }
     componentDidMount(){
         
