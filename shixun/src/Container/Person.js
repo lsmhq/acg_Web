@@ -112,8 +112,8 @@ export default class Person extends Component {
                     <div key={key}>
                     <div>                            
                     {/* 个人资料 */}
-                        <div className="container">                                                   
-                            <div className="content">
+                        <div className="container ">                                                   
+                            <div className="content  animated bounce">
                                 <input type='file' id='img_upload' name='img_upload' style={{display:'none'}} onChange={this.upLoad}/>
                                 <img className="avatar" src={"/images/avatar/"+item.avatarid} alt='' onClick={this.upFile}/>
                                 <div className="info">
@@ -125,7 +125,7 @@ export default class Person extends Component {
                         {/* 粉丝关注等级 */}
                         <div style={{
                             width:'100%',height:'50px',borderBottom:'2px solid #ccc',paddingBottom:'10px',margin:'auto'
-                        }}>
+                        }} className='animated bounceIn'>
                             <div className='person2'>
                             <Link to={'/fans/'+item.id}  style={{fontWeight:'bold',color:'rgb(255,64,129)'}}>粉丝 <br/> {this.state.fans} </Link>
                             </div>
@@ -147,7 +147,7 @@ export default class Person extends Component {
                             width:'100%',
                             textAlign:'center',
                             backgroundColor:''
-                        }}>
+                        }} className='animated fadeInUp'>
                             <p style={{marginTop:'20px',marginLeft:'-40px'}}>
                                 昵称： <input type='text'  defaultValue={item.name} style={{position:'relative',border:'0',borderBottom:'1px dashed rgba(255, 64,129)',backgroundColor:'transparent',textAlign:'center'}} id='name' name='name'/>
                             </p><br/>

@@ -82,7 +82,7 @@ export default class MyCood extends Component {
     componentDidMount(){
         if(localStorage.getItem('ShopCar')){
             this.setState({
-                data: localStorage.getItem('ShopCar')
+                data: JSON.parse(localStorage.getItem('ShopCar'))
             })
         }
     }

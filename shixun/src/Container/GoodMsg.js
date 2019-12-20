@@ -120,8 +120,10 @@ export default class GoodMsg extends Component {
                 let arr_data = JSON.parse(localStorage.getItem('ShopCar'));
                 arr_data.push(this.state.data[0]);
                 localStorage.setItem('ShopCar',JSON.stringify(arr_data));
+                alert('添加成功');
             }else{
                 localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
+                alert('添加成功');
             }
     }
     componentDidMount(){
