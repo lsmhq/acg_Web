@@ -24,7 +24,7 @@ export default class Video extends Component {
         return (
             <div>
                 <div>
-                <Header/>
+                    <Header/>
                 </div>
                 <div style={{height:'120px'}}>
                 </div>
