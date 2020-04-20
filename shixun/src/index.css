@@ -34,7 +34,7 @@ code {
   font-weight: bold;
   border:3px  rgba(255, 214, 226, 0.849) ;
   border-style:  none none dashed none ;
-  
+  overflow-x: scroll;
 }
 .logo{
   width: 50px;
@@ -85,8 +85,8 @@ code {
   
 }
 .tab{
-  width: 25%;
-  margin: 0 8%;
+  width: 20%;
+  margin: 6%;
 }
 /* 搜索头 */
 ul {

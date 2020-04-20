@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Body from '../Body';
-import {Link,HashRouter as Router,} from 'react-router-dom'
+import {Link,HashRouter as Router,} from 'react-router-dom';
 import Box from '../Box';
 import Header from '../Header';
-export default class Game extends Component {
+export default class Video extends Component {
     render() {
         return (
             <div>
-                 <div>
+                <div>
                 <Header/>
                 </div>
                 <div style={{height:'120px'}}>

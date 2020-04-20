@@ -12,10 +12,6 @@ export default class Header extends Component {
             userdata:[],
             value:'',
             head:''
-
-
-
-            
         }
     }
     cookieToObj=(cookie)=>{
@@ -34,27 +30,16 @@ export default class Header extends Component {
         if(this.state.data.length===0){
             return(
                 <Router>
-                <div className='header'>                                                
-                   
-                    
-                        
-                        
+                <div className='header'>                                                        
                         <Link to='/leftmenu' > <img src='/img/Logo.png' className='logo'  alt=''/>
                          </Link>
-                             
-                            
-                    
-                    
-                   
                     <button className='button'>
                         <Icon key="0" type="search" style={{ color:'#000'}} />
                     </button>  
                     <Link to='/searchmsg'>
                         <input type='text' style={{textAlign:'center'}} 
                         className='search' placeholder='搜一搜' id='search' name='search'  onChange={(e)=>this.changeEvent(e)}/>
-                    </Link>
-                    
-                                                                         
+                    </Link>                                                  
             </div>
             <div>
                  <div  className='nav1'>
@@ -62,9 +47,8 @@ export default class Header extends Component {
                     <Link to={'/animat'} className='tab'>动画</Link>
                     <Link to='/comic' className='tab'>卡通</Link>
                     <Link to='/game' className='tab'>游戏</Link>
-                    
+                    <Link to='/video' className='tab'>视频</Link>
                 </div>
-               
             </div>    
             </Router>
             )

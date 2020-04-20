@@ -20,6 +20,7 @@ import Activate from './Container/Activate';
 import Searchmsg from './Container/Searchmsg';
 import About from './Container/About';
 import Address from './Container/Address';
+import Video from './component/pages/Video'
 import './login.css';
 import  './animate.css';
 export default class App extends Component {
@@ -46,8 +47,7 @@ export default class App extends Component {
                 <Route path='/searchmsg' component={Searchmsg}/>
                 <Route path='/aboutus' component={About} />
                 <Route path='/address' component={Address}/>
-             
-                 
+                <Route path='/video' component={Video}/>
             </Router>
         )
     }
