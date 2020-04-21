@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
-export default class Form extends Component {
+export default class video_title extends Component {
+    
     render() {
         return (
             <div>
-                <input type='file' id='files'/>
-                <img src=''/>
+                {
+
+                }
             </div>
         )
     }

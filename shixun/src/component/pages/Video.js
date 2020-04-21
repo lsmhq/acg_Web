@@ -3,8 +3,7 @@ import Body from '../Body';
 import {Link,HashRouter as Router,} from 'react-router-dom';
 import Box from '../Box';
 import Header from '../Header';
-import {Player} from 'video-react';
-import './../../../node_modules/video-react/dist/video-react.css';
+import Container from './Video_container';
 export default class Video extends Component {
     constructor(){
         super()
@@ -13,11 +12,11 @@ export default class Video extends Component {
         }
     }
     componentDidMount(){
-        fetch('https://daitianfang.1459.top/api/v1/video').then(data=>data.json()).then(res=>{
-            this.setState({
-                data:res.data
-            })
-        })
+        // fetch('https://daitianfang.1459.top/api/v1/video').then(data=>data.json()).then(res=>{
+        //     this.setState({
+        //         data:res.data
+        //     })
+        // })
         //弹幕加载
     }
     render() {
@@ -26,14 +25,13 @@ export default class Video extends Component {
                 <div>
                     <Header/>
                 </div>
-                <div style={{height:'120px'}}>
+                <div style={{height:'86px'}}>
                 </div>
                 <div>
-                    <div className='video'>
-                        <Player>
-                            <source src='shixun\public\video\qyuqianxun.mp4'/>
-                        </Player> 
-                    </div>
+                    {
+                        
+                    }
+                    <Container src='https://daitianfang.1459.top/video/qyuqianxun/qyuqianxun.mp4' title='千与千寻'/>
                 </div>
                 <div id='footer'>
                         <Link to='/apphome'>
@@ -47,7 +45,7 @@ export default class Video extends Component {
                         </Link>
                         <Link to='/person'>
                             <Box src='/img/个人中心.png' title='个人' />
-                        </Link>
+                        </Link>  
                 </div>
             </div>
         )

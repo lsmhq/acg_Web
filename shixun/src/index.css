@@ -25,9 +25,8 @@ code {
 .nav1{
   z-index: 1000;
   position:fixed;
-  right:0px;
   top:60px;
-  line-height: 60px;
+  line-height: 35px;
   width: 100%;
   background-color: aliceblue;
   font-family: simsun;
@@ -35,6 +34,8 @@ code {
   border:3px  rgba(255, 214, 226, 0.849) ;
   border-style:  none none dashed none ;
   overflow-x: scroll;
+  text-indent: 15px;
+  height: 35px;
 }
 .logo{
   width: 50px;
@@ -86,7 +87,9 @@ code {
 }
 .tab{
   width: 20%;
-  margin: 6%;
+  display: block;
+  float: left;
+  text-indent: 25px;
 }
 /* 搜索头 */
 a{
@@ -322,5 +325,6 @@ code {
   margin:10px 0px 50px 0px ;
   border-radius: 3px;
 }
-
-
+.active{
+  background-color: rgb(255, 189, 222);
+}
