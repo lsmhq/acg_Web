@@ -29,15 +29,11 @@ export default class Video extends Component {
                 <div style={{height:'120px'}}>
                 </div>
                 <div>
-                    {
-                        this.state.data.map(val=>{
-                            <div className='video'>
-                                <Player>
-                                    <source src={val.vedio_src}/>
-                                </Player> 
-                            </div>
-                        })
-                    }
+                    <div className='video'>
+                        <Player>
+                            <source src='shixun\public\video\qyuqianxun.mp4'/>
+                        </Player> 
+                    </div>
                 </div>
                 <div id='footer'>
                         <Link to='/apphome'>
