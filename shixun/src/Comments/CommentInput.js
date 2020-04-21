@@ -59,14 +59,16 @@ export default class CommentInput extends Component {
         
             return (
                 <div className='comment-input'>
-                    <div className='comment-field'>
-                        <span className='comment-field-name'>评论内容：</span>
-                        <div className='comment-field-input'>
+                    <div style={{paddingBottom:'20px'}}>
+                        <span >评论内容：</span>
+                    </div>
+                    <div>
+                        <div style={{width:'300px'}}>
                             <textarea ref={(textarea)=>this.textarea=textarea} 
                             value={this.state.content} onChange={this.handleContentChange.bind(this)}/>
                         </div>
                     </div>
-                    <div className='comment-field-button'><button onClick={this.handleSubmit.bind(this)}>发表评论</button></div>
+                    <div style={{marginTop:'20px'}}><button onClick={this.handleSubmit.bind(this)}>发表评论</button></div>
                 </div>
             )
         }

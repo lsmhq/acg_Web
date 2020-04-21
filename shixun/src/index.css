@@ -89,15 +89,14 @@ code {
   margin: 6%;
 }
 /* 搜索头 */
-ul {
-  border-radius: 5px;
-  background-color: aliceblue;
-}
 a{
   list-style: none;
   color:black;
 }
-
+ul{
+  margin-top: 5px;
+  border-bottom:2px lightskyblue dashed;
+}
 /* 搜索热点*/
 .searchbg{
   background-image: url('/img/storebg.png');
@@ -237,8 +236,7 @@ a{
 /* 评论框样式 */
 .comment-input {
   width: 200px;
-  margin:10px 0 20px 10%; 
-  padding-bottom: 20px;
+  margin: 30px 0 0 20px;
  
 }
 
@@ -249,7 +247,9 @@ a{
 }
 .comment-btn2 {
   float: right;
-  margin: -32px 0 0 0;
+  color:white;
+  border: blue 1px solid;
+  background-color: blue;
   
 }
 
