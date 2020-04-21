@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Icon} from 'antd-mobile'
 import ReactDOM from 'react-dom'
-import {Link,HashRouter as Router,} from 'react-router-dom';
+import {NavLink,Link,HashRouter as Router,} from 'react-router-dom';
 export default class Header extends Component {
     constructor(){
         super();
@@ -9,7 +9,7 @@ export default class Header extends Component {
             data: [],
             cookie_obj:this.cookieToObj(document.cookie),
             src:'',
-            userdata:[],
+            userdata:[], 
             value:'',
             head:''
         }
@@ -43,11 +43,11 @@ export default class Header extends Component {
             </div>
             <div>
                  <div  className='nav1'>
-                    <Link to={'/apphome'} className='tab'>首页</Link>
-                    <Link to={'/animat'} className='tab'>动画</Link>
-                    <Link to='/comic' className='tab'>卡通</Link>
-                    <Link to='/game' className='tab'>游戏</Link>
-                    <Link to='/video' className='tab'>视频</Link>
+                    <NavLink to={'/apphome'} className='tab' activeClassName='active'>首页</NavLink>
+                    <NavLink to={'/animat'} className='tab' activeClassName = 'active'>动画</NavLink>
+                    <NavLink to='/comic' className='tab' activeClassName = 'active'>卡通</NavLink>
+                    <NavLink to='/game' className='tab' activeClassName = 'active'>游戏</NavLink>
+                    <NavLink to='/video' className='tab' activeClassName = 'active'>视频</NavLink>
                 </div>
             </div>    
             </Router>
@@ -82,11 +82,10 @@ export default class Header extends Component {
             </div>
             <div>
                  <div  className='nav1'>
-                    <Link to={'/apphome'} className='tab'>首页</Link>
-                    <Link to={'/animat'} className='tab'>动画</Link>
-                    <Link to='/comic' className='tab'>卡通</Link>
-                    <Link to='/game' className='tab'>游戏</Link>
-                    
+                    <NavLink to={'/apphome'} className='tab'>首页</NavLink>
+                    <NavLink to={'/animat'} className='tab'>动画</NavLink>
+                    <NavLink to='/comic' className='tab'>卡通</NavLink>
+                    <NavLink to='/game' className='tab'>游戏</NavLink>
                 </div>
                
             </div>    
