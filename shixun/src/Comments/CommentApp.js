@@ -6,10 +6,13 @@ export default class CommentApp extends Component {
     constructor(){
         super()
         this.state={
-            comments:[],
+            content:'',
+            data:[],
+            time:'',
             cookie_obj:this.cookieToObj(document.cookie),
         }
     }
+
     cookieToObj=(cookie)=>{
         let obj = {};
         if(cookie){
@@ -22,35 +25,13 @@ export default class CommentApp extends Component {
         return obj;
         
       }
-    componentWillMount () {
-        this._loadComments()
-      }
-      _loadComments () {
-        let comments = localStorage.getItem('comments')
-        if (comments) {
-          comments = JSON.parse(comments)
-          this.setState({ comments })
-        }
-      }
-      _saveComments (comments) {
-        localStorage.setItem('comments', JSON.stringify(comments))
-      }
-    handleSubmitComment (comment) {
-        if(!comment) return
-        if (!comment.content) return alert('请输入评论内容')
-        const comments=this.state.comments
-        comments.push(comment)
-        this.setState({comments})
-        this._saveComments(comments)
+    componentDidMount(){
+        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
+        .then((res)=>res.json())
+        .then((res)=>{
+            this.setState({data:res.data});
+        })
     }
-    handleDeleteComment (index) {
-        const comments = this.state.comments
-        comments.splice(index, 1)
-        this.setState({ comments })
-        this._saveComments(comments)
-    }
-
-    
     render() {
         if(this.state.cookie_obj.loginStatus !== 'b326b5062b2f0e69046810717534cb09'){
             return(
@@ -80,10 +61,42 @@ export default class CommentApp extends Component {
         return (
             <div className='wrapper'>
                 <h3 style={{textAlign:'center',color:'red',margin:'0px'}}>评论席</h3>
-                <CommentInput onSubmit={this.handleSubmitComment.bind(this)}/>
-                <CommentList 
-                comments={this.state.comments}
-                onDeleteComment={this.handleDeleteComment.bind(this)}/>
+                <textarea rows='3' value={(this.state.content)} className='comment-input'
+                    onChange={(event)=>{
+                        this.setState(
+                            {
+                                content:event.target.value
+                            }
+                        )
+                    }} placeholder='请输入评论内容'>    
+                </textarea>
+                <button onClick={this.submit} className='comment-btn'>发布</button>
+
+                
+                {this.state.data.map((item,key)=>(
+                    <ul  key={key} style={{}}>
+                            <li  className='animated fadeInUp'
+                                style={{
+                                    listStyle:'none', 
+                                }}
+                            > 
+                                   <p className='person'>
+                                        <img src='/img/个人中心.png'   alt='' style={{width:'20px',height:'20px',}}/>   
+                                       {item.name} ：</p> 
+                                    <p style={{width:'70%',overflow:'hidden'}}>{item.content}aaaaaaaaaaa</p> 
+                                    <p>
+                                        <span>
+                                            {item.time}2020年1月1日
+                                        </span>                                        
+                                    </p> 
+                                    <a   onClick={this.delete} className='comment-btn2'>删除</a>                                                                                                       
+                            </li> 
+                            </ul>   
+                        ))
+                       
+                    }
+                    
+                    
             </div>
         )
         }
