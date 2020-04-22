@@ -5,8 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
-
+html{
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -330,4 +333,59 @@ code {
 }
 .active{
   background-color: rgb(255, 189, 222);
+}
+.movie{
+  width: 33%;
+  height: 180px;
+  margin-top:30px;
+  margin-left: 12%;
+  float: left;
+
+}
+.videoImg{
+  border-radius: 5px;
+  width: 120px;
+  height: 150px;
+}
+.videoTitle{
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
+}
+.myPlayer{
+  margin-top:50px;
+}
+.video_content{
+  position: relative;
+  top: -140px;
+  width: 80%;
+  display: block;
+  left: 25%;
+  text-align: center;
+}
+.video_title{
+  margin-top: 20px;
+}
+.danmu{
+  width: 100%;
+  height: 50px;
+}
+.input{
+  width: 60%;
+  margin-left: 5%;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgb(173, 173, 173);
+  text-indent: 20px;
+}
+.send{
+  width: 25%;
+  margin-left: 5%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(126, 126, 126);
+}
+.send:active{
+  background-color: gray;
 }
