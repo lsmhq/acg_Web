@@ -239,21 +239,24 @@ ul{
 /* 评论框样式 */
 .comment-input {
   width: 200px;
-  margin: 30px 0 0 20px;
+  margin: 30px 0 0 40px;
+  padding-bottom: 10px;
  
 }
 
 .comment-btn {
   float: right;
-  margin:60px 45px  20px  0;
+  margin:70px 45px  20px  0;
   display: flex;
 }
 .comment-btn2 {
   float: right;
+  margin-top: -30px;
+  margin-left: 240px;
   color:white;
-  border: blue 1px solid;
+  border: white 1px solid;
   background-color: blue;
-  
+  position: absolute;
 }
 
 

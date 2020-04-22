@@ -82,7 +82,7 @@ export default class Articlemsg extends Component {
                     ))       
                 }
                 <br/> 
-                <CommentApp/>
+                <CommentApp data={this.props.match.params.id}/>
                 <div style={{height:'50px'}}>
                 </div>     
             </div>
