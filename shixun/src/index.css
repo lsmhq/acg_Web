@@ -230,14 +230,14 @@ ul{
 
 /* 动态评论列表 */
 .wrapper {
+  height: 100%;
   width: 100%;
   font-size: 14px;
   z-index: -1;
-  position: fixed;
+  position: absolute;
   overflow: scroll;
-  height: 500px;
   background-image: url('./Comments/background3.png');
-
+  padding-bottom: 50px;
   
 }
 

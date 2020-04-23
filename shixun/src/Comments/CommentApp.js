@@ -71,7 +71,7 @@ export default class CommentApp extends Component {
         else{
            
         return (
-            
+            <div>
             <div className='wrapper'>
                 <h3 style={{textAlign:'center',color:'red',margin:'0px'}}>评论席</h3>
                 <textarea rows='3' value={this.state.content}
@@ -110,6 +110,8 @@ export default class CommentApp extends Component {
                         toPath={this.state.fun}
                         btn={this.state.btn}
                     />                                  
+            </div>
+            
             </div>
             
         )
