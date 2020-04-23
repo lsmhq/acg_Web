@@ -189,7 +189,7 @@ export default class CommentApp extends Component {
             switch (data) {
                 case 'success':{
                   this.setState({
-                    msg:'取关成功',
+                    msg:'删除成功',
                     btn:'确认',
                     src:'/images/success.png',
                     fun:()=>{
@@ -204,7 +204,7 @@ export default class CommentApp extends Component {
                 }
                 case 'error':{
                   this.setState({
-                    msg:'取关失败',
+                    msg:'删除失败',
                     btn:'确认',
                     src:'/images/success.png',
                     fun:()=>{
