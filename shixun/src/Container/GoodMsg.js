@@ -95,7 +95,7 @@ export default class GoodMsg extends Component {
                 }
                 <br/>
                
-                <CommentApp/>
+                <CommentApp data={this.props.match.params.id}/>
                 </Router>
                
             </div>
