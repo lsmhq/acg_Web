@@ -83,11 +83,11 @@ export default class GoodMsg extends Component {
                         }}>
 
                         
-                            <button   onClick={()=>this.addgood()} style={{width:'50%',backgroundColor:'red',color:'white',
+                            <button   onClick={()=>this.addgood()} style={{width:'50%',backgroundColor:'red',color:'white', 
                             height: '50px',border:'none',zIndex:'1'}}>加入购物车</button>  
                         
 
-                            <button style={{width:'50%',backgroundColor:'orange',color:'white',
+                            <button style={{width:'50%',backgroundColor:'orange',color:'white', 
                             height: '50px',border:'none' ,zIndex:'1'}}  onClick={()=>this.buy()}>立即购买</button>         
                         </div>
                         </div>
@@ -95,7 +95,7 @@ export default class GoodMsg extends Component {
                 }
                 <br/>
                
-                <CommentApp/>
+                <CommentApp data={this.props.match.params.id}/>
                 </Router>
                
             </div>

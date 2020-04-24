@@ -4,9 +4,30 @@ export default class MyCood extends Component {
     constructor(){
         super();
         this.state ={
-            data:[]
+            data:[],
+            cookie_obj:this.cookieToObj(document.cookie),
         }
     }
+    cookieToObj=(cookie)=>{
+        let obj = {};
+        if(cookie){
+            cookie.split(';').map(item=>{
+                item = item.trim();
+                let arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            });
+        }
+        return obj;
+        
+      }
+      componentDidMount(){
+        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
+        .then((res)=>res.json())
+        .then((res)=>{
+            this.setState({data:res.data});
+        })
+        }
+        
     render() {
         if(this.state.data.length === 0){
             return (
@@ -51,39 +72,7 @@ export default class MyCood extends Component {
         }
 
     }
-    addgood(){
-
-        if(localStorage.getItem('ShopCar')){
-            
-            let arr_data = JSON.parse(localStorage.getItem('ShopCar'));
-            arr_data.push(this.state.data[0]);
-            localStorage.setItem('ShopCar',JSON.stringify(arr_data));
-        }else{
-            localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
-        }
-}
-    fetch_del(e){
-        if(localStorage.getItem('ShopCar')){
-            
-            let index = e.target.name.split('#')[1];
-            this.state.data.splice(index,1);
-            this.setState({
-                data:this.state.data
-            },()=>{
-                localStorage.setItem('ShopCar',JSON.stringify(this.state.data))
-            })
-        }else{
-            localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
-        }
     
 
-    }
-
-    componentDidMount(){
-        if(localStorage.getItem('ShopCar')){
-            this.setState({
-                data: JSON.parse(localStorage.getItem('ShopCar'))
-            })
-        }
-    }
+    
 }

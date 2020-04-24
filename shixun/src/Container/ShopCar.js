@@ -9,7 +9,8 @@ export default class ShopCar extends Component {
     constructor(){
         super();
         this.state = {
-            data: [],
+            data: [],//所有产品
+            data2:[],//用户产品
             msg:'',
             btn:'',
             src:'',
@@ -26,10 +27,14 @@ export default class ShopCar extends Component {
         .then((res)=>{
             this.setState({data:res.data});
         })
-        if(localStorage.getItem('ShopCar')){
-            let num = 0;
-            let arr = JSON.parse(localStorage.getItem('ShopCar'));
-            arr.map(item=>{
+        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')//用户产品计算总价
+        .then((res)=>res.json())
+        .then((res)=>{
+            this.setState({data2:res.data});
+        })
+        if(this.state.data2){
+            let num = 0;         
+            this.state.data2.map(item=>{
                 num += item.price;
             })
             this.setState({
@@ -40,8 +45,9 @@ export default class ShopCar extends Component {
                 count:0
             })
         }
-
+        
     }
+    
     render() {
         let style = {
             color:'orange',

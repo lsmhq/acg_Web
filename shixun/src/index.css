@@ -99,7 +99,7 @@ a{
 }
 ul{
   margin-top: 5px;
-  border-bottom:2px lightskyblue dashed;
+  
 }
 /* 搜索热点*/
 .searchbg{
@@ -230,10 +230,14 @@ ul{
 
 /* 动态评论列表 */
 .wrapper {
+  height: 100%;
   width: 100%;
   font-size: 14px;
-  /* background-color: #fff; */
-  /* border: 1px solid #f1f1f1; */
+  z-index: -1;
+  position: absolute;
+  overflow: scroll;
+  background-image: url('./Comments/background3.png');
+  padding-bottom: 50px;
   
 }
 
