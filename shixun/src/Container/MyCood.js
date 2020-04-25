@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import ReactDom from 'react-dom';
 export default class MyCood extends Component {
     constructor(){
         super();
@@ -72,7 +73,53 @@ export default class MyCood extends Component {
         }
 
     }
-    
+    fetch_del(e){
+        let data = {};
+        data.type='del';
+        data.goodid=this.props.data;
+        data.ueserid=this.state.cookie_obj.ueserid;
+        console.log(data.goodid)
+        console.log(data.userid)
+        fetch('https://daitianfang.1459.top/api/v1/person?id='+this.state.cookie_obj.ueserid,{
+            method:'POST',
+            mode:'cors',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(data)
+        }).then(req=>{
+            return req.text();
+        }).then(data=>{
+            switch (data) {
+                case 'success':{
+                  this.setState({
+                    msg:'删除成功',
+                    btn:'确认',
+                    src:'/images/success.png',
+                    fun:()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                    }
+                },()=>{
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                })   
+                    this.componentDidMount();
+                    
+                    break;
+                }
+                case 'error':{
+                  this.setState({
+                    msg:'删除失败',
+                    btn:'确认',
+                    src:'/images/success.png',
+                    fun:()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                    }
+                },()=>{
+                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                })   
+                    break;
+                }
+            }
+        })
+      }
 
     
 }

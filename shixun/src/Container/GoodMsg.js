@@ -11,6 +11,7 @@ export default class GoodMsg extends Component {
         super();
         this.state = {
             data: [],
+            cookie_obj:this.cookieToObj(document.cookie),
             a:localStorage.length,
             msg:'',
             btn:'',
@@ -20,6 +21,17 @@ export default class GoodMsg extends Component {
             }
         }
     }
+    cookieToObj=(cookie)=>{
+        let obj = {};
+        if(cookie){
+            cookie.split(';').map(item=>{
+                item = item.trim();
+                let arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            });
+        }
+        return obj;
+      }
    
     
     render() {
@@ -83,7 +95,7 @@ export default class GoodMsg extends Component {
                         }}>
 
                         
-                            <button   onClick={()=>this.addgood()} style={{width:'50%',backgroundColor:'red',color:'white', 
+                            <button   onClick={(e)=>this.fetch_addgood(e)} style={{width:'50%',backgroundColor:'red',color:'white', 
                             height: '50px',border:'none',zIndex:'1'}}>加入购物车</button>  
                         
 
@@ -113,19 +125,54 @@ export default class GoodMsg extends Component {
             ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
         })   
     }
-    addgood(){
+    fetch_addgood(e){
+        let data = {
 
-            if(localStorage.getItem('ShopCar')){
-                
-                let arr_data = JSON.parse(localStorage.getItem('ShopCar'));
-                arr_data.push(this.state.data[0]);
-                localStorage.setItem('ShopCar',JSON.stringify(arr_data));
-                alert('添加成功');
-            }else{
-                localStorage.setItem('ShopCar',JSON.stringify(this.state.data));
-                alert('添加成功');
+        };
+        data.type='insert';  
+        data.goodid=this.props.match.params.id;
+        data.userid=this.state.cookie_obj.userid;
+        console.log(data.goodid)
+        console.log(data.userid)
+        fetch('https://daitianfang.1459.top/api/v1/person?id='+this.state.cookie_obj.userid,{
+            method:'POST',
+            mode:'cors',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(data)
+        }).then(req=>{
+            return req.text();
+        }).then(data=>{
+            switch (data) {
+                case 'success':{
+                    this.setState({
+                        msg:'添加成功',
+                        btn:'确认',
+                        src:'/images/success.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
+                    this.componentDidMount();
+                    break;
+                }
+                case 'error':{
+                    this.setState({
+                        msg:'添加失败',
+                        btn:'确认',
+                        src:'/images/failed.png',
+                        fun:()=>{
+                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
+                        }
+                    },()=>{
+                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
+                    })   
+                    break;
+                }
             }
-    }
+        })
+      }
     componentDidMount(){
         fetch('https://daitianfang.1459.top/api/v1/goods?id='+this.props.match.params.id)
         .then((res)=>res.json())
