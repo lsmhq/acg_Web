@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link,Route,HashRouter as Router} from 'react-router-dom'
 import ReactDom from 'react-dom';
-import Alert from '../component/Alert';
+import  Alert from '../component/Alert' 
 export default class CommentApp extends Component {
     constructor(){
         super()   
@@ -36,8 +36,7 @@ export default class CommentApp extends Component {
         
       }
     componentDidMount(){
-        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
-        // fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data)
+        fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data)
         .then((res)=>res.json())
         .then((res)=>{
             this.setState({data:res.data});
@@ -117,13 +116,14 @@ export default class CommentApp extends Component {
         )
         }
     }
+    
     fetch_submit(e){
         let data = {
 
         };
         var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
         data.type='insert';  
-        data.id=this.props.data
+        data.id=this.props.data;
         data.auterid=this.state.cookie_obj.userid;
         data.evaluation=document.getElementById('comment').value;
         data.timetamp=timesign;

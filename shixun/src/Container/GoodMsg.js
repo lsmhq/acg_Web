@@ -9,8 +9,12 @@ export default class GoodMsg extends Component {
     
      constructor(){
         super();
+        var today = new Date(),
+            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         this.state = {
             data: [],
+            timebig:date,         
+            time:new Date(), 
             cookie_obj:this.cookieToObj(document.cookie),
             a:localStorage.length,
             msg:'',
@@ -73,7 +77,7 @@ export default class GoodMsg extends Component {
                             />
                             <div style={{margin:'20px 30px'}}>
                             <h2 style={{color:'orange'}}>￥{item.price}元</h2>   
-                            <h3>商品名称：{item.name}</h3>
+                            <h3 id='goodsname'>商品名称:{item.name}</h3>
                             <h3>公司商家：{item.source}  {item.brand}</h3>
                         </div>
                         <hr/>
@@ -129,12 +133,17 @@ export default class GoodMsg extends Component {
         let data = {
 
         };
+        var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
         data.type='insert';  
-        data.goodid=this.props.match.params.id;
         data.userid=this.state.cookie_obj.userid;
-        console.log(data.goodid)
+        data.goodsid=this.props.match.params.id;       
+        data.timetemp=timesign;
+        data.goodsname=document.getElementById('goodsname').innerText.split(':')[1];
+        console.log(data.goodsid)
+        console.log(data.goodsname)
+        console.log(data.timetemp)
         console.log(data.userid)
-        fetch('https://daitianfang.1459.top/api/v1/person?id='+this.state.cookie_obj.userid,{
+        fetch('https://daitianfang.1459.top/api/v1/shoppingcart?id='+this.state.cookie_obj.userid,{
             method:'POST',
             mode:'cors',
             headers:{'Content-Type':'application/json'},

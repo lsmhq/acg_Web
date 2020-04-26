@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import ReactDom from 'react-dom';
+
 export default class MyCood extends Component {
     constructor(){
         super();
+        var today = new Date(),
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         this.state ={
             data:[],
+            timebig:date,         
+            time:new Date(),
             cookie_obj:this.cookieToObj(document.cookie),
         }
     }
@@ -22,7 +27,7 @@ export default class MyCood extends Component {
         
       }
       componentDidMount(){
-        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
+        fetch('https://daitianfang.1459.top/api/v1/shoppingcart?id='+this.state.cookie_obj.userid)
         .then((res)=>res.json())
         .then((res)=>{
             this.setState({data:res.data});
@@ -75,12 +80,15 @@ export default class MyCood extends Component {
     }
     fetch_del(e){
         let data = {};
+        var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
         data.type='del';
-        data.goodid=this.props.data;
-        data.ueserid=this.state.cookie_obj.ueserid;
-        console.log(data.goodid)
+        data.userid=this.state.cookie_obj.userid;
+        data.goodsid=this.props.data;
+        data.timetemp=timesign;
+        console.log(data.goodsid)
         console.log(data.userid)
-        fetch('https://daitianfang.1459.top/api/v1/person?id='+this.state.cookie_obj.ueserid,{
+        console.log(data.timetemp)
+        fetch('https://daitianfang.1459.top/api/v1/shoppingcart?id='+this.state.cookie_obj.ueserid,{
             method:'POST',
             mode:'cors',
             headers:{'Content-Type':'application/json'},
