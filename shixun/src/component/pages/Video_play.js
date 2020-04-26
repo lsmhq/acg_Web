@@ -15,7 +15,7 @@ export default class Video_play extends Component {
             this.setState({
                 data:res.data[0]
             },()=>{
-                this.player.load();  
+                this.player.load();
             })
         })
         //弹幕加载
@@ -25,6 +25,9 @@ export default class Video_play extends Component {
                 barrage:data.data
             })
         })
+        setInterval(()=>{
+            this.shoot();
+        },1000);
     }
     send = (e)=>{
         let data = {
@@ -39,7 +42,7 @@ export default class Video_play extends Component {
             mode:'cors',
             headers: {
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json'
               },
             body:JSON.stringify(data)
         }).then(res=>{
@@ -50,10 +53,51 @@ export default class Video_play extends Component {
                 })
             })
         })
+        var span = document.createElement('span');
+        span.innerHTML = document.getElementById('barrage').value;
+        span.classList.add('barrage');
+        span.classList.add('move');
+        span.style.color = this.color();
+        span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/15 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+60 + 'px';
+        span.style.left = `${100+(Math.random()+0.1)*20}%`;
+        span.style.textAlign = 'center';
+        span.style.border = '1px solid white';
+        span.style.wordWrap = 'break-word';
+        span.style.whiteSpace = 'nowrap';
+        document.getElementsByClassName('myPlayer')[0].append(span);
+        document.getElementById('barrage').value = '';
+    }
+    shoot = ()=>{
+        //弹幕效果
+        this.state.barrage.map(val=>{
+            if(parseInt(document.getElementById('video-1').currentTime) === parseInt(val.timetemp) && !document.getElementById('video-1').paused){
+                var span = document.createElement('span');
+                span.innerHTML = val.content;
+                span.classList.add('barrage');
+                span.classList.add('move');
+                span.style.color = this.color();
+                span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/10 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+60 + 'px';
+                span.style.left = `${100+(Math.random()+0.1)*20}%`;
+                span.style.wordWrap = 'break-word';
+                span.style.whiteSpace = 'nowrap';
+                var timer = setTimeout(()=>{
+                    span.style.display = 'none';
+                    clearInterval(timer);
+                },5000);
+                document.getElementsByClassName('myPlayer')[0].append(span);
+            }
+        })
+    }
+    color = ()=>{
+        let r = Math.floor(Math.random()*256);
+        let g = Math.floor(Math.random()*256);
+        let b = Math.floor(Math.random()*256);
+        let color = `rgb(${r},${g},${b})`;
+        return(color);
     }
     render() {
         return (
-            <div>
+            <div style={{height:'100%',width:'100%',overflow:'hidden'}}>
                 <NavBar
                 style={{backgroundColor:'rgb(255,64,129)',
                 position:'fixed',zIndex:'1000',left:'0px' ,top:'0px',width:'100%'

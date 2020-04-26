@@ -5,9 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  height: 100%;
+  overflow:hidden;
+  width: 100%;
 }
-
+html{
+  height: 100%;
+  overflow:hidden;
+}
+#root{
+  height: 100%;
+  overflow:hidden;
+  width: 100%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -21,8 +31,6 @@ code {
   width: 100%;
   background-color: rgb(255 64 129);
 }
-
-
 .nav1{
   z-index: 1000;
   position:fixed;
@@ -356,6 +364,9 @@ code {
 }
 .myPlayer{
   margin-top:50px;
+  height: 30%;
+  overflow: hidden;
+  width: 100%;
 }
 .video_content{
   position: relative;
@@ -366,7 +377,9 @@ code {
   text-align: center;
 }
 .video_title{
-  margin-top: 20px;
+  top: 40%;
+  width: 100%;
+  position:absolute;
 }
 .danmu{
   width: 100%;
@@ -390,4 +403,17 @@ code {
 }
 .send:active{
   background-color: gray;
+}
+.barrage{
+  display: block;
+  position: absolute;
+  z-index: 100;
+  animation: move 5s linear;
+  font-weight: 900;
+}
+@keyframes move{
+to{
+    left:-10%;
+    display: none;
+  }
 }
