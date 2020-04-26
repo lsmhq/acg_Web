@@ -11,6 +11,7 @@ export default class Video_play extends Component {
         }
     }
     componentDidMount(){
+        console.log(this.props.match.params.id);
         fetch(`https://daitianfang.1459.top/api/v1/video?id='${this.props.match.params.id}'`).then(data=>data.json()).then(res=>{
             this.setState({
                 data:res.data[0]
@@ -26,10 +27,12 @@ export default class Video_play extends Component {
             })
         })
         setInterval(()=>{
-            this.shoot();
+            if(document.getElementById('video-1'))
+                this.shoot();
         },1000);
     }
     send = (e)=>{
+        console.log(this.props.match.params.id);
         let data = {
             type:'insert',
             id:this.props.match.params.id,
@@ -75,8 +78,8 @@ export default class Video_play extends Component {
                 span.innerHTML = val.content;
                 span.classList.add('barrage');
                 span.classList.add('move');
-                span.style.color = this.color();
-                span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/10 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+60 + 'px';
+                span.style.color = 'white';
+                span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/12 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+40 + 'px';
                 span.style.left = `${100+(Math.random()+0.1)*20}%`;
                 span.style.wordWrap = 'break-word';
                 span.style.whiteSpace = 'nowrap';
@@ -104,7 +107,12 @@ export default class Video_play extends Component {
             }}
                 mode="white"
                 icon={<Icon type="left" />}
-                onLeftClick={() => window.history.back(-1)}
+                onLeftClick={() => {
+                    window.history.back(-1);
+                    this.setState({
+                        barrage:[]
+                    });
+                }}
                 >{`视频播放--${this.state.data.titel}`}</NavBar>
                 <div className='myPlayer'>
                     <Player ref={player => {this.player = player;}} videoId="video-1">
