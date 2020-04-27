@@ -79,7 +79,7 @@ export default class Video_play extends Component {
                 span.classList.add('barrage');
                 span.classList.add('move');
                 span.style.color = 'white';
-                span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/12 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+40 + 'px';
+                span.style.top = - parseInt(document.getElementsByClassName('myPlayer')[0].clientHeight)/10 + parseInt(document.getElementsByClassName('myPlayer')[0].clientHeight) * (Math.random()+0.2) + 'px';
                 span.style.left = `${100+(Math.random()+0.1)*20}%`;
                 span.style.wordWrap = 'break-word';
                 span.style.whiteSpace = 'nowrap';
