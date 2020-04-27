@@ -31,23 +31,26 @@ export default class MyCood extends Component {
         fetch('https://daitianfang.1459.top/api/v1/shoppingcart?id='+this.state.cookie_obj.userid)
         .then((res)=>res.json())
         .then((res)=>{
-            this.setState({data:res.data});
-            console.log(this.state.data[0].goodsid)
-            var arr=new Array();
-            for(var i=0;i<this.state.data.length;i++){
-                console.log(this.state.data[i].goodsid)
-                fetch('https://daitianfang.1459.top/api/v1/goods?id='+this.state.data[i].goodsid)
-                .then((res)=>res.json())
-                .then((res)=>{
-                    
-                    arr[i]=res.data
-                    
-                })
-            }
-            this.setState({
-                data2:arr
-            })
-            console.log(arr)
+            this.setState({data:res.data},()=>{
+                var arr=[];
+                for(var i=0;i<this.state.data.length;i++){
+                    fetch('https://daitianfang.1459.top/api/v1/goods?id='+this.state.data[i].goodsid)
+                    .then((res)=>res.json())
+                    .then((res)=>{
+                        console.log(res.data[0]);
+                        arr.push(res.data[0]);
+                        console.log(arr);
+                    }).then(()=>{
+                        this.setState({
+                            data2:arr
+                        },()=>{
+                            console.log(this.state.data2);
+                        })
+                    })
+                }
+                
+            });
+
         })
        
         

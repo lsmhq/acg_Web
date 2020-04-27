@@ -58,12 +58,9 @@ export default class CommentApp extends Component {
                         </Link>
                         <div style={{height:'100px',width:"100%"}}></div>
                     </div>
-
-            
             )
         }
         else{
-           
         return (
             <div>
             <div className='wrapper'>
@@ -90,8 +87,8 @@ export default class CommentApp extends Component {
                                         <img src='/img/用户.png'   alt='' style={{width:'17px',height:'17px',}}/>   
                                        {item.evalutor} ：</p> 
                                     <p style={{width:'200px',overflow:'hidden'}} >{item.evaluation}
-                                    </p> 
-                            <p id='timeshow'>时间 ：{item.timetemp}</p>
+                                    </p>
+                                    <p id='timeshow'>{item.timetemp}</p>
                                     <button style={{}}  className='comment-btn2' onClick={(e)=>{this.fetch_delcomment(e)}} >删除</button>
                                            
                             </li> 
@@ -147,9 +144,7 @@ export default class CommentApp extends Component {
         let data = {};
         data.type='del';
         data.id=this.props.data;
-        data.timetemp=document.getElementById('timeshow').innerText.split('：')[1];
-        console.log(data.id)
-        console.log(data.timetemp)
+        data.timetemp=document.getElementById('timeshow').innerText;
         fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data,{
             method:'POST',
             mode:'cors',
@@ -160,13 +155,10 @@ export default class CommentApp extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                 
                     this.componentDidMount();
-                    
                     break;
                 }
                 case 'error':{
-                  
                     break;
                 }
             }

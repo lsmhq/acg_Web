@@ -82,10 +82,11 @@ export default class Header extends Component {
             </div>
             <div>
                  <div  className='nav1'>
-                    <NavLink to={'/apphome'} className='tab'>首页</NavLink>
-                    <NavLink to={'/animat'} className='tab'>动画</NavLink>
-                    <NavLink to='/comic' className='tab'>卡通</NavLink>
-                    <NavLink to='/game' className='tab'>游戏</NavLink>
+                    <NavLink to={'/apphome'} className='tab' activeClassName = 'active'>首页</NavLink>
+                    <NavLink to={'/animat'} className='tab' activeClassName = 'active'>动画</NavLink>
+                    <NavLink to='/comic' className='tab' activeClassName = 'active'>卡通</NavLink>
+                    <NavLink to='/game' className='tab' activeClassName = 'active'>游戏</NavLink>
+                    <NavLink to='/video' className='tab' activeClassName = 'active'>视频</NavLink>
                 </div>
                
             </div>    
