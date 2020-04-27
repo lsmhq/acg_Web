@@ -46,13 +46,13 @@ export default class MyCood extends Component {
             return (
                 <div style={{marginTop:'45px'}}>
                     {
-                        this.state.data.map((item,index)=>{
+                        this.state.data.map((item,index)=>{                            
                             return(                                                                                                                                                                                                                                                                                                         
                                 <ul style={{padding:'0',}}  key={index}>   
                                  <button  style={{float:'right',marginRight:'4.8%',border:'none',backgroundColor:'red',color:'white'}} name={`del#${index}`}
-                                            onClick={(e)=>{this.fetch_del(e)}}
+                                            onClick={(id)=>{this.fetch_del(item.goodsid)}}
                                             >X</button>                        
-                                    <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
+                                    <Link to={'/goodmsg/'+item.goodsid}  style={{fontSize:'10px',}}>
                                         <li style={{height:'100px' ,width:'90%',border: '1px solid #cfcfcf',margin:' 0 5%',
                                         backgroundColor:"aliceblue",borderRadius:'3px'}}>
                                            
@@ -71,6 +71,7 @@ export default class MyCood extends Component {
                                     </Link>                                                                                                               
                             </ul>
                             )
+                            
                         })
                     }
                 </div>
@@ -78,12 +79,13 @@ export default class MyCood extends Component {
         }
 
     }
-    fetch_del(e){
+    fetch_del(id){
         let data = {};
         var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
+        var goodsid=id;
         data.type='del';
         data.userid=this.state.cookie_obj.userid;
-        data.goodsid=this.props.data;
+        data.goodsid=goodsid;
         data.timetemp=timesign;
         console.log(data.goodsid)
         console.log(data.userid)
