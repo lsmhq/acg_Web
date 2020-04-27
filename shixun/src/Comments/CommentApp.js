@@ -11,7 +11,6 @@ export default class CommentApp extends Component {
             content:'',
             data:[],  
             timebig:date,         
-             
             cookie_obj:this.cookieToObj(document.cookie),
             
         }
@@ -77,6 +76,7 @@ export default class CommentApp extends Component {
                 ></textarea>
                 <button onClick={(e)=>{this.fetch_submit(e)}} className='comment-btn'>发布</button>
                 {this.state.data.map((item,key)=>(
+                    
                     <ul  key={key} style={{}}>
                             <li  className='animated fadeInUp'
                                 style={{
@@ -140,11 +140,13 @@ export default class CommentApp extends Component {
         })
       }
 
-      fetch_delcomment(e){
+      fetch_delcomment(time){
         let data = {};
         data.type='del';
         data.id=this.props.data;
-        data.timetemp=document.getElementById('timeshow').innerText;
+        data.timetemp=time;
+        console.log(data.id)
+        console.log(data.timetemp)
         fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data,{
             method:'POST',
             mode:'cors',
