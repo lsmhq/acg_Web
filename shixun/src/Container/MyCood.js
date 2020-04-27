@@ -9,6 +9,7 @@ export default class MyCood extends Component {
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         this.state ={
             data:[],
+            data2:[],
             timebig:date,         
             time:new Date(),
             cookie_obj:this.cookieToObj(document.cookie),
@@ -31,7 +32,26 @@ export default class MyCood extends Component {
         .then((res)=>res.json())
         .then((res)=>{
             this.setState({data:res.data});
+            console.log(this.state.data[0].goodsid)
+            var arr=new Array();
+            for(var i=0;i<this.state.data.length;i++){
+                console.log(this.state.data[i].goodsid)
+                fetch('https://daitianfang.1459.top/api/v1/goods?id='+this.state.data[i].goodsid)
+                .then((res)=>res.json())
+                .then((res)=>{
+                    
+                    arr[i]=res.data
+                    
+                })
+            }
+            this.setState({
+                data2:arr
+            })
+            console.log(arr)
         })
+       
+        
+        
         }
         
     render() {
@@ -46,13 +66,14 @@ export default class MyCood extends Component {
             return (
                 <div style={{marginTop:'45px'}}>
                     {
-                        this.state.data.map((item,index)=>{                            
+                        this.state.data2.map((item,index)=>{ 
+                                                      
                             return(                                                                                                                                                                                                                                                                                                         
                                 <ul style={{padding:'0',}}  key={index}>   
                                  <button  style={{float:'right',marginRight:'4.8%',border:'none',backgroundColor:'red',color:'white'}} name={`del#${index}`}
                                             onClick={(id)=>{this.fetch_del(item.goodsid)}}
                                             >X</button>                        
-                                    <Link to={'/goodmsg/'+item.goodsid}  style={{fontSize:'10px',}}>
+                                    <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                         <li style={{height:'100px' ,width:'90%',border: '1px solid #cfcfcf',margin:' 0 5%',
                                         backgroundColor:"aliceblue",borderRadius:'3px'}}>
                                            
