@@ -11,14 +11,9 @@ export default class CommentApp extends Component {
             content:'',
             data:[],  
             timebig:date,         
-            time:new Date(),         
+             
             cookie_obj:this.cookieToObj(document.cookie),
-            msg:'',
-            btn:'',
-            src:'',
-            fun:()=>{
-
-            }
+            
         }
         
     }
@@ -93,22 +88,17 @@ export default class CommentApp extends Component {
                             > 
                                    <p className='person'>
                                         <img src='/img/用户.png'   alt='' style={{width:'17px',height:'17px',}}/>   
-                                       {item.name} ：</p> 
-                                    <p style={{width:'200px',overflow:'hidden'}} >aaaaaaaaaa{item.content}
+                                       {item.evalutor} ：</p> 
+                                    <p style={{width:'200px',overflow:'hidden'}} >{item.evaluation}
                                     </p> 
-                            <p id='timeshow'>时间：{item.time}</p>
+                            <p id='timeshow'>时间 ：{item.timetemp}</p>
                                     <button style={{}}  className='comment-btn2' onClick={(e)=>{this.fetch_delcomment(e)}} >删除</button>
                                            
                             </li> 
                             </ul>   
                         ))                      
                     }    
-                     <Alert
-                        msg={this.state.msg}
-                        src={this.state.src}
-                        toPath={this.state.fun}
-                        btn={this.state.btn}
-                    />                                  
+                                                 
             </div>
             
             </div>
@@ -121,7 +111,7 @@ export default class CommentApp extends Component {
         let data = {
 
         };
-        var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
+        var timesign=this.state.timebig + new Date().toLocaleTimeString();
         data.type='insert';  
         data.id=this.props.data;
         data.auterid=this.state.cookie_obj.userid;
@@ -141,30 +131,12 @@ export default class CommentApp extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    this.setState({
-                        msg:'评论成功',
-                        btn:'确认',
-                        src:'/images/success.png',
-                        fun:()=>{
-                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                        }
-                    },()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                    })   
+                    
                     this.componentDidMount();
                     break;
                 }
                 case 'error':{
-                    this.setState({
-                        msg:'发布失败',
-                        btn:'确认',
-                        src:'/images/failed.png',
-                        fun:()=>{
-                            ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                        }
-                    },()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                    })   
+                    
                     break;
                 }
             }
@@ -175,9 +147,9 @@ export default class CommentApp extends Component {
         let data = {};
         data.type='del';
         data.id=this.props.data;
-        data.timetamp=document.getElementById('timeshow').innerText;
+        data.timetemp=document.getElementById('timeshow').innerText.split('：')[1];
         console.log(data.id)
-        console.log(data.timetamp)
+        console.log(data.timetemp)
         fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data,{
             method:'POST',
             mode:'cors',
@@ -188,31 +160,13 @@ export default class CommentApp extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                  this.setState({
-                    msg:'删除成功',
-                    btn:'确认',
-                    src:'/images/success.png',
-                    fun:()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                    }
-                },()=>{
-                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                })   
+                 
                     this.componentDidMount();
                     
                     break;
                 }
                 case 'error':{
-                  this.setState({
-                    msg:'删除失败',
-                    btn:'确认',
-                    src:'/images/success.png',
-                    fun:()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                    }
-                },()=>{
-                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                })   
+                  
                     break;
                 }
             }

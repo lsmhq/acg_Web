@@ -27,24 +27,24 @@ export default class ShopCar extends Component {
         .then((res)=>{
             this.setState({data:res.data});
         })
-        fetch('https://daitianfang.1459.top/api/v1/goods?id=all')//用户产品计算总价
-        .then((res)=>res.json())
-        .then((res)=>{
-            this.setState({data2:res.data});
-        })
-        if(this.state.data2){
-            let num = 0;         
-            this.state.data2.map(item=>{
-                num += item.price;
-            })
-            this.setState({
-                count:num
-            }) 
-        }else{
-            this.setState({
-                count:0
-            })
-        }
+        // fetch('https://daitianfang.1459.top/api/v1/goods?id=all')//用户产品计算总价
+        // .then((res)=>res.json())
+        // .then((res)=>{
+        //     this.setState({data2:res.data});
+        // })
+        // if(this.state.data2){
+        //     let num = 0;         
+        //     this.state.data2.map(item=>{
+        //         num += item.price;
+        //     })
+        //     this.setState({
+        //         count:num
+        //     }) 
+        // }else{
+        //     this.setState({
+        //         count:0
+        //     })
+        // }
         
     }
     

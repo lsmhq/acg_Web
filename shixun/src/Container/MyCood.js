@@ -100,31 +100,13 @@ export default class MyCood extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                  this.setState({
-                    msg:'删除成功',
-                    btn:'确认',
-                    src:'/images/success.png',
-                    fun:()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                    }
-                },()=>{
-                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                })   
+                 
                     this.componentDidMount();
                     
                     break;
                 }
                 case 'error':{
-                  this.setState({
-                    msg:'删除失败',
-                    btn:'确认',
-                    src:'/images/success.png',
-                    fun:()=>{
-                        ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='none';
-                    }
-                },()=>{
-                    ReactDom.findDOMNode(document.getElementById('login_alert')).style.display='block';
-                })   
+                  
                     break;
                 }
             }
