@@ -100,7 +100,7 @@ export default class Video_play extends Component {
     }
     render() {
         return (
-            <div style={{height:'100%',width:'100%',overflow:'hidden'}}>
+            <div style={{height:'100%',width:'100%'}}>
                 <NavBar
                 style={{backgroundColor:'rgb(255,64,129)',
                 position:'fixed',zIndex:'1000',left:'0px' ,top:'0px',width:'100%'

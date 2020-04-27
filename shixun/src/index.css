@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  overflow: hidden;
   width: 100%;
 }
 html{
@@ -15,7 +14,6 @@ html{
 }
 #root{
   height: 100%;
-  overflow:hidden;
   width: 100%;
 }
 code {
