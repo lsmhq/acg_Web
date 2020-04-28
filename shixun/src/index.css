@@ -5,11 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
+}
+body::-webkit-scrollbar{
+  display: none;
 }
 html{
   height: 100%;
-  overflow-y: scroll;
 }
 #root{
   width: 100%;
@@ -239,8 +240,6 @@ ul{
   font-size: 14px;
   z-index: -1;
   position: absolute;
-  overflow: scroll;
-  background-image: url('./Comments/background3.png');
   padding-bottom: 50px;
   
 }
@@ -352,6 +351,7 @@ code {
   border-radius: 5px;
   width: 120px;
   height: 150px;
+  float: left;
 }
 .videoTitle{
   font-size: 13px;
@@ -359,43 +359,47 @@ code {
   text-align: center;
 }
 .myPlayer{
-  margin-top:50px;
-  height: 30%;
+  margin-top:45px;
+  height: 43%;
   overflow: hidden;
-  width: 100%;
-  position: absolute;
+  width: 105%;
+  position: fixed;
+  z-index: 1000;
+  background-color: rgb(58, 58, 58);
 }
 .video_content{
   position: relative;
-  top: -140px;
-  width: 80%;
+  width: 100%;
   display: block;
-  left: 25%;
+  font-size: 20px;
   text-align: center;
+  top:20px;
 }
 .video_title{
-  top: 40%;
+  top: 50%;
   width: 100%;
   position:absolute;
 }
 .danmu{
   width: 100%;
   height: 50px;
+  margin-top: 10px;
 }
 .input{
-  width: 60%;
-  margin-left: 5%;
+  width: 80%;
+  margin-left: 2%;
   height: 30px;
   border-radius: 5px;
   outline: none;
   border: 1px solid rgb(173, 173, 173);
   text-indent: 20px;
+  background-color: rgb(194, 194, 194);
 }
 .send{
-  width: 25%;
-  margin-left: 5%;
-  height: 30px;
+  width: 10%;
+  height: 35px;
   border-radius: 5px;
+  margin-left: 2px;
   border: 1px solid rgb(126, 126, 126);
 }
 .send:active{
@@ -413,4 +417,33 @@ to{
     left:-20%;
     display: none;
   }
+}
+#talk{
+  position: absolute;
+  top: 90%;
+  width: 100%;
+}
+.content_title{
+  float: left;
+  width: 60%;
+}
+.video_read{
+  width: 20%;
+  margin-top: 20px;
+  margin-left: 10%;
+  display: block;
+}
+#video_nav{
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  height: 5%;
+  background-color: rgb(85, 85, 85);
+}
+#video_nav>a{
+  display: block;
+  width: 50%;
+  text-align: center;
+  line-height: 200%;
+  color: white;
 }

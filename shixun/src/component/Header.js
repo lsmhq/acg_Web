@@ -88,7 +88,6 @@ export default class Header extends Component {
                     <NavLink to='/game' className='tab' activeClassName = 'active'>游戏</NavLink>
                     <NavLink to='/video' className='tab' activeClassName = 'active'>视频</NavLink>
                 </div>
-               
             </div>    
             </Router>
             
