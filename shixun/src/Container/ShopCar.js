@@ -11,41 +11,43 @@ export default class ShopCar extends Component {
         this.state = {
             data: [],//所有产品
             data2:[],//用户产品
+            cookie_obj:this.cookieToObj(document.cookie),
             msg:'',
             btn:'',
             src:'',
             fun:()=>{
 
             },
-            count:0
+            count:'',
             
         }
     }
+
+    cookieToObj=(cookie)=>{
+        let obj = {};
+        if(cookie){
+            cookie.split(';').map(item=>{
+                item = item.trim();
+                let arr = item.split('=');
+                obj[arr[0]] = arr[1];
+            });
+        }
+        return obj;
+        
+      }
     componentDidMount(){
         fetch('https://daitianfang.1459.top/api/v1/goods?id=all')
         .then((res)=>res.json())
         .then((res)=>{
             this.setState({data:res.data});
+        })             
+    }
+    componentWillMount(){
+        fetch('https://daitianfang.1459.top/api/v1/shoppingcart?id='+this.state.cookie_obj.userid)
+        .then((res)=>res.json())
+        .then((res)=>{
+            this.setState({data2:res.data});
         })
-        // fetch('https://daitianfang.1459.top/api/v1/goods?id=all')//用户产品计算总价
-        // .then((res)=>res.json())
-        // .then((res)=>{
-        //     this.setState({data2:res.data});
-        // })
-        // if(this.state.data2){
-        //     let num = 0;         
-        //     this.state.data2.map(item=>{
-        //         num += item.price;
-        //     })
-        //     this.setState({
-        //         count:num
-        //     }) 
-        // }else{
-        //     this.setState({
-        //         count:0
-        //     })
-        // }
-        
     }
     
     render() {
@@ -120,7 +122,7 @@ export default class ShopCar extends Component {
                 zIndex:"10000",
                 backgroundColor:'white'
             }}>
-            <p style={style} id='count'>总价：{this.state.count}元</p>
+            <p style={style} id='count'>总件：{this.state.data2.length} 件</p>
                         <button 
                              onClick={(e)=>{this.fetch_bug(e)}}
                             style={{width:'30%',backgroundColor:'blue',float:'right',
