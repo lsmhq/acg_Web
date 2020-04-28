@@ -74,7 +74,7 @@ export default class MyCood extends Component {
                             return(                                                                                                                                                                                                                                                                                                         
                                 <ul style={{padding:'0',}}  key={index}>   
                                  <button  style={{float:'right',marginRight:'4.8%',border:'none',backgroundColor:'red',color:'white'}} name={`del#${index}`}
-                                            onClick={(id)=>{this.fetch_del(item.goodsid)}}
+                                            onClick={(id)=>{this.fetch_del(item.id)}}
                                             >X</button>                        
                                     <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                         <li style={{height:'100px' ,width:'90%',border: '1px solid #cfcfcf',margin:' 0 5%',
@@ -106,10 +106,9 @@ export default class MyCood extends Component {
     fetch_del(id){
         let data = {};
         var timesign=this.state.timebig+this.state.time.toLocaleTimeString();
-        var goodsid=id;
         data.type='del';
         data.userid=this.state.cookie_obj.userid;
-        data.goodsid=goodsid;
+        data.goodsid=id;
         data.timetemp=timesign;
         console.log(data.goodsid)
         console.log(data.userid)

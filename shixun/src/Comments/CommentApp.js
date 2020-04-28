@@ -89,7 +89,7 @@ export default class CommentApp extends Component {
                                     <p style={{width:'200px',overflow:'hidden'}} >{item.evaluation}
                                     </p>
                                     <p id='timeshow'>{item.timetemp}</p>
-                                    <button style={{}}  className='comment-btn2' onClick={(e)=>{this.fetch_delcomment(e)}} >删除</button>
+                                    <button style={{}}  className='comment-btn2' onClick={(time)=>{this.fetch_delcomment(item.timetemp)}} >删除</button>
                                            
                             </li> 
                             </ul>   
