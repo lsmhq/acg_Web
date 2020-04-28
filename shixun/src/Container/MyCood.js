@@ -122,14 +122,11 @@ export default class MyCood extends Component {
             return req.text();
         }).then(data=>{
             switch (data) {
-                case 'success':{
-                 
-                    this.componentDidMount();
-                    
+                case 'success':{         
+                    this.componentDidMount();                
                     break;
                 }
-                case 'error':{
-                  
+                case 'error':{                  
                     break;
                 }
             }
