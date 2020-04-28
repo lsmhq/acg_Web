@@ -63,7 +63,8 @@ export default class CommentApp extends Component {
         return (
             <div>
             <div className='wrapper'>
-                <h3 style={{textAlign:'center',color:'red',margin:'0px'}}>评论席</h3>
+                
+                <div style={{width:'100%',marginTop:'20px'}}>
                 <textarea rows='3' value={this.state.content}
                     onChange={(event)=>{
                         this.setState({
@@ -75,6 +76,7 @@ export default class CommentApp extends Component {
                     id='comment'
                 ></textarea>
                 <button onClick={(e)=>{this.fetch_submit(e)}} className='comment-btn'>发布</button>
+                </div>
                 {this.state.data.map((item,key)=>(
                     
                     <ul  key={key} style={{}}>
@@ -83,13 +85,14 @@ export default class CommentApp extends Component {
                                     listStyle:'none', 
                                 }}
                             > 
-                                   <p className='person'>
+                                   <p className='person' id='person'>
                                         <img src='/img/用户.png'   alt='' style={{width:'17px',height:'17px',}}/>   
-                                       {item.evalutor} ：</p> 
-                                    <p style={{width:'200px',overflow:'hidden'}} >{item.evaluation}
-                                    </p>
+                                       {item.evalutor} ：</p>
                                     <p id='timeshow'>{item.timetemp}</p>
-                                    <button style={{}}  className='comment-btn2' onClick={(time)=>{this.fetch_delcomment(item.timetemp)}} >删除</button>
+                                    <p style={{width:'200px',overflow:'hidden'}} className='comments' >{item.evaluation}
+                                    </p>
+                                    <button className='comment-btn2' onClick={(time)=>{this.fetch_delcomment(item.timetemp)}}>×</button>
+                                    <div style={{border:'0.5px dotted rgb(255,64,129)',width:'300px'}}></div>
                                            
                             </li> 
                             </ul>   

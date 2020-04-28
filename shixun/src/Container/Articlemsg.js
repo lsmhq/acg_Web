@@ -39,7 +39,7 @@ export default class Articlemsg extends Component {
         
         
         return (
-            <div style={{backgroundImage:'url("/img/background3.png")'}}>
+            <div style={{}}>
                 <NavBar
                     style={{backgroundColor:'rgb(255,64,129)',
                     position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}

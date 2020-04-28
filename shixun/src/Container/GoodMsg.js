@@ -42,7 +42,7 @@ export default class GoodMsg extends Component {
         
         
         return (
-            <div style={{backgroundImage:'url("/img/background3.png")'}}>
+            <div style={{}}>
                 <Router>
                 <NavBar 
                     style={{backgroundColor:'rgb(255,64,129)',
