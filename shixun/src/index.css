@@ -241,30 +241,38 @@ ul{
   z-index: -1;
   position: absolute;
   padding-bottom: 50px;
-  
+  background-color: whitesmoke;
 }
 
 /* 评论框样式 */
 .comment-input {
-  width: 200px;
-  margin: 30px 0 0 40px;
-  padding-bottom: 10px;
+  width:300px;
+  margin-left: 30px;
+  bottom: 0;
+  height: 50px;
+  border: 1px double rgb(255,64,129);
+  border-radius: 5px;
  
 }
-
 .comment-btn {
   float: right;
-  margin:70px 45px  20px  0;
-  display: flex;
+  margin-right: 30px;
+  margin-top: 10px;
+  bottom: 0;
+  border: rgb(255,64,129) 1px solid;
+  background-color: rgb(255,64,129);
+  color: white;
+  border-radius: 5px;
 }
 .comment-btn2 {
   float: right;
   margin-top: -30px;
   margin-left: 240px;
-  color:white;
+  color:rgb(255,64,129);
   border: white 1px solid;
-  background-color: blue;
   position: absolute;
+  background-color: whitesmoke;
+  border-radius: 35px;
 }
 
 
@@ -420,7 +428,7 @@ to{
 }
 #talk{
   position: absolute;
-  top: 90%;
+  top: 80%;
   width: 100%;
 }
 .content_title{
@@ -446,4 +454,34 @@ to{
   text-align: center;
   line-height: 200%;
   color: white;
+}
+#person{
+  color:rgb(255,64,129);
+  font-size: medium;
+  margin-left: 20px;
+}
+#timeshow{
+  font-size: smaller;
+  margin-left: 20px;
+  color: gray;
+}
+.comments{
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: FZMeiHei-M07S;
+}
+.talk_container{
+  float: left;
+}
+.talk_container>img{
+  margin-left:-20px;
+  border-radius: 100%;
+  border: 2px solid rgb(255, 96, 184);
+  margin-top: 30px;
+}
+.talk_content{
+  width: 88%;
+}
+.talk_li{
+  height: 20%;
 }

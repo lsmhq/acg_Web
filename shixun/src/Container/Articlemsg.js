@@ -39,7 +39,7 @@ export default class Articlemsg extends Component {
         
         
         return (
-            <div style={{backgroundImage:'url("/img/background3.png")'}}>
+            <div style={{}}>
                 <NavBar
                     style={{backgroundColor:'rgb(255,64,129)',
                     position:'fixed',zIndex:'1000',right:'0px' ,top:'0px',width:'100%'}}
@@ -66,7 +66,7 @@ export default class Articlemsg extends Component {
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={item.images} alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
+                            <img src={'https://daitianfang.1459.top/'+item.images} alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
                             <div style={{margin:'20px 30px'}}>
                             <h3 style={{textAlign:'center'}}>{item.title}</h3>   
                             <h4 id='auther  ' style={{textAlign:'center'}}>小编：<span id='auther'>{item.auther}</span></h4>

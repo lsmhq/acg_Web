@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Icon} from 'antd-mobile'
-import ReactDOM from 'react-dom'
 import {NavLink,Link,HashRouter as Router,} from 'react-router-dom';
 export default class Header extends Component {
     constructor(){
