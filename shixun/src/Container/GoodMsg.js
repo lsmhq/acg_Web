@@ -68,7 +68,7 @@ export default class GoodMsg extends Component {
 
                     {this.state.data.map((item,key)=>(
                         <div key={key}>
-                            <img src={item.path } alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
+                            <img src={'https://daitianfang.1459.top/'+item.path } alt='' style={{width:'100%',height:'180px',marginTop:'45px'}} />
                             <Alert
                                 msg={this.state.msg}
                                 src={this.state.src}

@@ -77,9 +77,6 @@ export default class ShopCar extends Component {
                         btn={this.state.btn}
                     />
                 <MyCood/>
-                
-
-
                 <hr/>
                 <h3 style={{width:'100%',textAlign:'center'}}>
                     推荐商品
@@ -89,20 +86,16 @@ export default class ShopCar extends Component {
                                 <Link to={'/goodmsg/'+item.id}  style={{fontSize:'10px',}}>
                                     <li style={{height:'200px' ,width:'42.5%',float:'left',border: '1px solid #cfcfcf',
                                     margin:'10px 2.5% 0 4%',backgroundColor:"aliceblue",borderRadius:'3px'}}>
-                                        <img src={item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
-                                        
+                                        <img src={'https://daitianfang.1459.top/'+item.path} style={{width:'80%',height:'50%',margin:'10px 0 0 10%'}} alt=''/>
                                         <h4 style={{margin:'20px 0 0 10%'}}>
                                             商品名称：{item.name}
                                             <br/>
                                             <br/>
                                             <span style={{color:"orange"}}>
                                                 价格：{item.price}元
-                                                
                                             </span>
                                         </h4>
                                         <h4 style={{margin:'20px 0 0 10%'}}>商家：{item.source}  {item.brand}</h4>
-
-                                        
                                     </li>                                  
                                 </Link>                                                                                                               
                         </ul> 

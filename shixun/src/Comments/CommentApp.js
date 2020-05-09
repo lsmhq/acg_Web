@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import {Link,Route,HashRouter as Router} from 'react-router-dom'
-import ReactDom from 'react-dom';
-import  Alert from '../component/Alert' 
 export default class CommentApp extends Component {
     constructor(){
         super()   
@@ -12,7 +10,7 @@ export default class CommentApp extends Component {
             data:[],  
             timebig:date,         
             cookie_obj:this.cookieToObj(document.cookie),
-            
+            person_data:{}
         }
         
     }
@@ -64,7 +62,7 @@ export default class CommentApp extends Component {
             <div>
             <div className='wrapper'>
                 
-                <div style={{width:'100%',marginTop:'20px'}}>
+                <div style={{width:'100%',marginTop:'20px',height:'100px'}}>
                 <textarea rows='3' value={this.state.content}
                     onChange={(event)=>{
                         this.setState({
@@ -78,35 +76,29 @@ export default class CommentApp extends Component {
                 <button onClick={(e)=>{this.fetch_submit(e)}} className='comment-btn'>发布</button>
                 </div>
                 {this.state.data.map((item,key)=>(
-                    
                     <ul  key={key} style={{}}>
-                            <li  className='animated fadeInUp'
+                            <li  className='animated fadeInUp talk_li'
                                 style={{
-                                    listStyle:'none', 
+                                    listStyle:'none',
                                 }}
                             > 
-                                   <p className='person' id='person'>
-                                        <img src='/img/用户.png'   alt='' style={{width:'17px',height:'17px',}}/>   
-                                       {item.evalutor} ：</p>
+                                <div className='talk_container'><img src={`https://daitianfang.1459.top/images/avatar/4qG1yUvxWG.jpeg`} style={{width:'50px',height:'50px',}}/></div>
+                                <div className='talk_container talk_content'>
+                                    <p className='person' id='person'>{item.evalutor}</p>
                                     <p id='timeshow'>{item.timetemp}</p>
-                                    <p style={{width:'200px',overflow:'hidden'}} className='comments' >{item.evaluation}
+                                    <p  className='comments' >{item.evaluation}
                                     </p>
                                     <button className='comment-btn2' onClick={(time)=>{this.fetch_delcomment(item.timetemp)}}>×</button>
-                                    <div style={{border:'0.5px dotted rgb(255,64,129)',width:'300px'}}></div>
-                                           
+                                </div>     
                             </li> 
                             </ul>   
                         ))                      
-                    }    
-                                                 
+                    }                                   
             </div>
-            
             </div>
-            
         )
         }
     }
-    
     fetch_submit(e){
         let data = {
 
@@ -117,10 +109,6 @@ export default class CommentApp extends Component {
         data.auterid=this.state.cookie_obj.userid;
         data.evaluation=document.getElementById('comment').value;
         data.timetamp=timesign;
-        console.log(data.evaluation)
-        console.log(data.id)
-        console.log(data.auterid)
-        console.log(data.timetamp)
         fetch('https://daitianfang.1459.top/api/v1/talk?id='+this.props.data,{
             method:'POST',
             mode:'cors',
@@ -131,7 +119,11 @@ export default class CommentApp extends Component {
         }).then(data=>{
             switch (data) {
                 case 'success':{
-                    
+                    fetch(`https://daitianfang.1459.top/api/v1/person?id=${this.state.cookie_obj.userid}`).then(res=>res.json()).then((data)=>{
+                        this.setState({
+                            person_data:data.data[0]
+                        })
+                    })
                     this.componentDidMount();
                     break;
                 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Icon} from 'antd-mobile'
-import ReactDOM from 'react-dom'
 import {NavLink,Link,HashRouter as Router,} from 'react-router-dom';
 export default class Header extends Component {
     constructor(){
@@ -88,7 +87,6 @@ export default class Header extends Component {
                     <NavLink to='/game' className='tab' activeClassName = 'active'>游戏</NavLink>
                     <NavLink to='/video' className='tab' activeClassName = 'active'>视频</NavLink>
                 </div>
-               
             </div>    
             </Router>
             

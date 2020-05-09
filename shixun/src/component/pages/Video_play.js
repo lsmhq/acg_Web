@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavBar,Icon } from 'antd-mobile';
 import Player from 'video-react/lib/components/Player';
 import './../../../node_modules/video-react/dist/video-react.css';
+import Talk from '../../Comments/CommentApp';
 export default class Video_play extends Component {
     constructor(){
         super();
@@ -61,7 +62,7 @@ export default class Video_play extends Component {
         span.classList.add('barrage');
         span.classList.add('move');
         span.style.color = this.color();
-        span.style.top = - document.getElementsByClassName('myPlayer')[0].clientHeight/15 + document.getElementsByClassName('myPlayer')[0].clientHeight * Math.random()+60 + 'px';
+        span.style.top = 100*Math.random() + 'px';
         span.style.left = `${100+(Math.random()+0.1)*20}%`;
         span.style.textAlign = 'center';
         span.style.border = '1px solid white';
@@ -79,7 +80,7 @@ export default class Video_play extends Component {
                 span.classList.add('barrage');
                 span.classList.add('move');
                 span.style.color = 'white';
-                span.style.top = - parseInt(document.getElementsByClassName('myPlayer')[0].clientHeight)/10 + parseInt(document.getElementsByClassName('myPlayer')[0].clientHeight) * (Math.random()+0.2) + 'px';
+                span.style.top = 150*Math.random() + 'px';
                 span.style.left = `${100+(Math.random()+0.1)*20}%`;
                 span.style.wordWrap = 'break-word';
                 span.style.whiteSpace = 'nowrap';
@@ -118,16 +119,22 @@ export default class Video_play extends Component {
                     <Player ref={player => {this.player = player;}} videoId="video-1">
                         <source src={this.state.data.barragefile}/>
                     </Player>
-                </div>
-                <div className='video_title animated fadeIn'>
                     <div className='danmu'>
                         <input type='text' placeholder="发点什么吧" className='input' id='barrage'/>
-                        <input type='button' value='发送' className='send' onClick={(e)=>{this.send(e)}}/>
+                        <input type='button' value='✈' className='send' onClick={(e)=>{this.send(e)}}/>
                     </div>
+                </div>
+                <div className='video_title animated fadeIn'>
                     <div>
                         <img src={this.state.data.cover} className='videoImg' style={{marginLeft:'20px',marginTop:'20px'}}/>
-                        <span className='video_content'>{this.state.data.titel}</span>
+                        <div className='content_title'>
+                            <span className='video_content'>{this.state.data.titel}</span>
+                            <span className='video_read'>简介:</span>
+                        </div>
                     </div>
+                </div>
+                <div id = 'talk'>
+                    <Talk data = {this.props.match.params.id}/>
                 </div>
             </div>
         )

@@ -12,7 +12,6 @@ export default class Animat extends Component {
                 <Header/>
                 </div>
                 <div style={{height:'86px'}}>
-
                 </div>
                 <Body url='https://daitianfang.1459.top/api/v1/chapter?type=animation'/>
                 <div id='footer'>
